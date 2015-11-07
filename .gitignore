@@ -1,0 +1,22 @@
+# Package Files #
+*.jar
+*.war
+*.ear
+*.class
+
+# Other #
+*.cmd
+.mvn/**
+mvnw
+
+
+**/target/**
+**/lib/**
+
+# Netbeans files #
+**/nb-configuration.xml
+**/nbactions.xml
+
+# IntelliJ IDEA Files#
+.idea/**
+*.iml

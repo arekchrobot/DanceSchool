@@ -1,0 +1,13 @@
+<groups xmlns="http://www.isdc.ro/wro">
+    <group name="others">
+        <css>webjar:bootstrap/3.2.0/less/bootstrap.less</css>
+        <js>webjar:jquery/2.1.1/jquery.min.js</js>
+        <js>webjar:angularjs/1.4.7/angular.min.js</js>
+        <js>webjar:angularjs/1.4.7/angular-route.min.js</js>
+    </group>
+    <group name="app">
+        <js>file:${project.basedir}/src/main/resources/static/js/config.js</js>
+        <js>file:${project.basedir}/src/main/resources/static/js/mainController.js</js>
+        <js>file:${project.basedir}/src/main/resources/static/js/app.js</js>
+    </group>
+</groups>
