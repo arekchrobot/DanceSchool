@@ -15,7 +15,7 @@
         </style>
     </head>
     <body ng-app="hello" ng-cloak class="ng-cloak">
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default navbar-fixed-top" ng-controller="navigationController">
             <div class="container">
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
@@ -23,6 +23,10 @@
                         <li><a class="menu-item" href="#/activities">Activities</a></li>
                         <li><a class="menu-item" href="#/account">Your account</a></li>
                         <li><a class="menu-item" href="#/contact">Contact</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#/login" ng-click="login()" ng-hide="authenticated">Login</a></li>
+                        <li><a href="#/logout" ng-click="logout()" ng-show="authenticated">Logout</a></li>
                     </ul>
                 </div>
             </div>

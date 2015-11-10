@@ -5,5 +5,9 @@ angular.module('hello',['ngRoute','appControllers'])
                 templateUrl: 'main.html',
                 controller: 'mainController'
             })
+            .when('/activities', {
+                templateUrl: 'activities.html',
+                controller: 'activitiesController'  
+            })
             .otherwise('/');
     }]);
