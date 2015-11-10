@@ -5,9 +5,9 @@ appControllers.controller('navigationController',['$rootScope','$scope',function
     
     $scope.login = function() {
         $rootScope.authenticated = true;
-    }
+    };
     
     $scope.logout = function() {
         $rootScope.authenticated = false;
-    }
+    };
 }]);
