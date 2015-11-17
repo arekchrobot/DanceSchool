@@ -1,6 +1,6 @@
 'use strict';
 
-appControllers.controller('contactController', ['$scope', '$timeout', function ($scope, $timeout) {
+appControllers.controller('contactController', ['$scope', '$timeout', '$location', function ($scope, $timeout, $location) {
         $scope.map = {
             center: {
                 latitude: 51.73885,
@@ -57,5 +57,17 @@ appControllers.controller('contactController', ['$scope', '$timeout', function (
                 $scope.dynamicMoveCtr++;
             }, 2000);
         }, 1000);
+        
+        $scope.contactData = {
+            user: 'Imie i nazwisko',
+            email: 'email@example.com',
+            phone: '',
+            message: ''
+        }
+        
+        $scope.submitContactData = function() {
+            alert('Dziękujemy za wysłaną wiadomość');
+            $location.path('/home');
+        }
     }]);
 

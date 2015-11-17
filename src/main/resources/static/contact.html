@@ -64,36 +64,44 @@
     <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
     <div class="row">
         <div class="col-md-8">
-            <h3>Send us a Message</h3>
-            <form name="sentMessage" id="contactForm" novalidate>
+            <h3>Wyślij nam swoją wiadomość</h3>
+            <form name="sentMessage" id="contactForm" novalidate ng-submit="submitContactData()">
                 <div class="control-group form-group">
                     <div class="controls">
-                        <label>Full Name:</label>
-                        <input type="text" class="form-control" id="name" required data-validation-required-message="Please enter your name.">
-                        <p class="help-block"></p>
+                        <label>Imię i nazwisko:</label>
+                        <input type="text" class="form-control" name="user" required ng-model="contactData.user">
+                        <span style="color:red" ng-show="sentMessage.user.$dirty && sentMessage.user.$invalid">
+                            <span ng-show="sentMessage.user.$error.required">Imię i nazwisko jest wymagane.</span>
+                        </span>
                     </div>
                 </div>
                 <div class="control-group form-group">
                     <div class="controls">
-                        <label>Phone Number:</label>
-                        <input type="tel" class="form-control" id="phone" required data-validation-required-message="Please enter your phone number.">
+                        <label>Numer telefonu:</label>
+                        <input type="tel" class="form-control" name="phone" ng-model="contactData.phone">
                     </div>
                 </div>
                 <div class="control-group form-group">
                     <div class="controls">
-                        <label>Email Address:</label>
-                        <input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email address.">
+                        <label>Adres email:</label>
+                        <input type="email" class="form-control" name="email" required ng-model="contactData.email">
+                        <span style="color:red" ng-show="sentMessage.email.$dirty && sentMessage.email.$invalid">
+                            <span ng-show="sentMessage.email.$error.required">Email jest wymagany.</span>
+                            <span ng-show="sentMessage.email.$error.email">Niepoprawny adres email.</span>
+                        </span>
                     </div>
                 </div>
                 <div class="control-group form-group">
                     <div class="controls">
                         <label>Message:</label>
-                        <textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
+                        <textarea rows="10" cols="100" class="form-control" name="message" ng-model="contactData.message"
+                                  required maxlength="999" style="resize:none"></textarea>
                     </div>
                 </div>
                 <div id="success"></div>
                 <!-- For success/fail messages -->
-                <button type="submit" class="btn btn-primary">Send Message</button>
+                <button type="submit" class="btn btn-primary"  
+                        ng-disabled="sentMessage.user.$dirty && sentMessage.user.$invalid || sentMessage.email.$dirty && sentMessage.email.$invalid">Wyslij wiadomość</button>
             </form>
         </div>
 
@@ -101,15 +109,5 @@
     <!-- /.row -->
 
     <hr>
-
-    <!-- Footer -->
-    <!--        <footer>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <p>Copyright &copy; Your Website 2014</p>
-                    </div>
-                </div>
-            </footer>-->
-
 </div>
 <!-- /.container -->
