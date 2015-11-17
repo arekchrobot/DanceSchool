@@ -9,5 +9,9 @@ angular.module('hello',['ngRoute','appControllers'])
                 templateUrl: 'activities.html',
                 controller: 'activitiesController'  
             })
+            .when('/contact', {
+                templateUrl: 'contact.html',
+                controller: 'contactController'
+            })
             .otherwise('/');
     }]);
