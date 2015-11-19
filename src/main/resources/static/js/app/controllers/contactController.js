@@ -63,11 +63,11 @@ appControllers.controller('contactController', ['$scope', '$timeout', '$location
             email: 'email@example.com',
             phone: '',
             message: ''
-        }
+        };
         
         $scope.submitContactData = function() {
             alert('Dziękujemy za wysłaną wiadomość');
             $location.path('/home');
-        }
+        };
     }]);
 
