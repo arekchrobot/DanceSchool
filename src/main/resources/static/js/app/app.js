@@ -1,4 +1,4 @@
-angular.module('hello',['ngRoute','appControllers'])
+angular.module('hello',['ngRoute','appControllers', 'smoothScroll'])
     .config(['$routeProvider',function ($routeProvider){
         $routeProvider
             .when('/',{

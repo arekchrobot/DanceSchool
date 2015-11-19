@@ -134,6 +134,11 @@
                         <artifactId>angular-simple-logger</artifactId>
                         <version>0.1.4</version>
                     </dependency>
+                    <dependency>
+                        <groupId>org.webjars.bower</groupId>
+                        <artifactId>ngSmoothScroll</artifactId>
+                        <version>1.7.1</version>
+                    </dependency>
                 </dependencies>
             </plugin>
         </plugins>

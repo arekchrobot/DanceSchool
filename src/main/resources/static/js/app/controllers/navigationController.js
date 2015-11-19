@@ -1,6 +1,6 @@
 'use strict';
 
-appControllers.controller('navigationController',['$rootScope','$scope',function($rootScope, $scope){
+appControllers.controller('navigationController',['$rootScope','$scope', '$anchorScroll', '$location', function($rootScope, $scope, $anchorScroll, $location){
     $rootScope.authenticated = false;
     
     $scope.login = function() {
@@ -29,5 +29,10 @@ appControllers.controller('navigationController',['$rootScope','$scope',function
         $event.preventDefault();
         $event.stopPropagation();
         $scope.status.isopen = !$scope.status.isopen;
+    };
+    
+    $scope.goToTop = function() {
+        $location.hash('top');
+        $anchorScroll();
     };
 }]);

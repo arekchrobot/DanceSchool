@@ -15,9 +15,20 @@
             .angular-google-map-container { 
                 height: 400px; 
             }
+            #toTop {
+                display: block;
+                position: fixed;
+                top: 50%;
+                right: 0;
+                padding: 10px;
+                border: 1px solid gray;
+                border-radius: 4px;
+                background: white;
+            }
         </style>
     </head>
     <body ng-app="hello" ng-cloak class="ng-cloak">
+        <div id="topDiv" style="position: fixed; top: 0%"></div>
         <nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="navigationController" role="navigation">
             <div class="container">
                 <div class="navbar-header">
@@ -56,6 +67,9 @@
         </nav>
         <!--<div class="container">-->
         <div ng-view></div>
+
+        <a id="toTop" class="btn btn-default" scroll-to="topDiv"><i class="fa fa-fw fa-chevron-up"></i> Powrót</a>
+
         <div class="container">
             <!-- Footer -->
             <footer>
