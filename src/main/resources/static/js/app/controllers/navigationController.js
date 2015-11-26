@@ -1,6 +1,6 @@
 'use strict';
 
-appControllers.controller('navigationController',['$rootScope','$scope', '$anchorScroll', '$location', function($rootScope, $scope, $anchorScroll, $location){
+appControllers.controller('navigationController',['$rootScope','$scope', '$anchorScroll', '$location', 'activitiesService', function($rootScope, $scope, $anchorScroll, $location, activitiesService){
     $rootScope.authenticated = false;
     
     $scope.login = function() {
@@ -35,4 +35,6 @@ appControllers.controller('navigationController',['$rootScope','$scope', '$ancho
         $location.hash('top');
         $anchorScroll();
     };
+
+    $scope.loadModernDance = activitiesService.loadModernDance();
 }]);
