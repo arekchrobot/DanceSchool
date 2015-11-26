@@ -13,5 +13,13 @@ angular.module('hello',['ngRoute','appControllers', 'smoothScroll'])
                 templateUrl: 'contact.html',
                 controller: 'contactController'
             })
+            .when('/about', {
+                templateUrl: 'about.html',
+                controller: 'aboutController'
+            })
+            .when('/priceList', {
+                templateUrl: 'priceList.html',
+                controller: 'priceListController'
+            })
             .otherwise('/');
     }]);

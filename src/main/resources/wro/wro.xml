@@ -19,6 +19,8 @@
         <js>file:${project.basedir}/src/main/resources/static/js/app/controllers/navigationController.js</js>
         <js>file:${project.basedir}/src/main/resources/static/js/app/controllers/activitiesController.js</js>
         <js>file:${project.basedir}/src/main/resources/static/js/app/controllers/contactController.js</js>
+        <js>file:${project.basedir}/src/main/resources/static/js/app/controllers/aboutController.js</js>
+        <js>file:${project.basedir}/src/main/resources/static/js/app/controllers/priceListController.js</js>
         <js>file:${project.basedir}/src/main/resources/static/js/app/app.js</js>
     </group>
 </groups>

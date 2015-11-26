@@ -47,17 +47,18 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" uib-dropdown-toggle>Zajęcia <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item" href="#/">Taniec towarzyski</a>
+                                    <a class="dropdown-item" href="#/activities" ng-click="loadBallroomDance()">Taniec towarzyski</a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="#/activities" ng-click="loadModernDance()">Taniec nowoczesny</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="#/">Specjane okazje</a>
+                                    <a class="dropdown-item" href="#/activities" ng-click="loadSpecialOccasionDance()">Specjane okazje</a>
                                 </li>
                             </ul>
                         </li>
-                        <li><a class="menu-item" href="#/account">Your account</a></li>
+                        <li><a class="menu-item" href="#/priceList">Cennik</a></li>
+                        <li><a class="menu-item" href="#/about">O nas</a></li>
                         <li><a class="menu-item" href="#/contact">Kontakt</a></li>
                         <!--<li><a class="menu-item" href="" ng-click="login()" ng-hide="authenticated">Login</a></li>-->
                         <!--<li><a class="menu-item" href="" ng-click="logout()" ng-show="authenticated">Logout</a></li>-->
@@ -75,7 +76,23 @@
             <footer>
                 <div class="row">
                     <div class="col-lg-12">
-                        <p>Copyright &copy; Your Website 2014</p>
+                        <p style="font-size: 0.8em;">Copyright &copy; Wólczańska School Dance 2012-2015</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="images/logo2.png"/>
+                    </div>
+                    <div class="col-md-4">
+                        <h4 style="font-size: 0.8em;">Kontakt</h4>
+                        <p style="font-size: 0.7em;">
+                            Wólczańska 256<br>95-111 Łódź<br>
+                        </p>
+                        <p style="font-size: 0.7em;"><i class="fa fa-phone"></i>
+                            <abbr title="Telefon">Telefon</abbr>: +48 42 234 34 45</p>
+                        <p style="font-size: 0.7em;"><i class="fa fa-envelope-o"></i>
+                            <abbr title="Email">Email</abbr>: <a href="mailto:szkolatanca@taniec.com">szkolatanca@taniec.com</a>
+                        </p>
+                        <p style="font-size: 0.7em;"><i class="fa fa-clock-o"></i>
+                            <abbr title="Godziny otwarcia">Godziny otwarcia</abbr>: Poniedziałek - Piątek: 9:00 - 21:00</p>
                     </div>
                 </div>
             </footer>
