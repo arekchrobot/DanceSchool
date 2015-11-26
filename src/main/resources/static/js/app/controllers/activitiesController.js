@@ -1,5 +1,8 @@
 'use strict';
 
 appControllers.controller('activitiesController',['$scope',function($scope){
-    $scope.omg = "today's lessons";
+    $scope.alert = function(id){
+        alert('Dziękujemy za zapisanie się');
+        $('#'+id).hide();
+    };
 }]);
