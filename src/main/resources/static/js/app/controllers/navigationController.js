@@ -36,5 +36,5 @@ appControllers.controller('navigationController',['$rootScope','$scope', '$ancho
         $anchorScroll();
     };
 
-    $scope.loadModernDance = activitiesService.loadModernDance();
+    $rootScope.loadModernDance = activitiesService.loadModernDance();
 }]);

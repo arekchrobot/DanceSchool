@@ -7,27 +7,25 @@ appServices.service('activitiesService', function() {
     };
     var gallery = [];
 
-    var loadModernDance = function() {
-        var modernTeachers = [];
-        var teacher1 = {
-            image: 'images/nowoczesny_instruktor1.png',
-            name: 'Katarzyna Kowalska',
-            description: 'Fascynuje się tańcem od dziecka. Pracuje jako instruktorka tańca nowoczesnego od czterech lat.'
-        };
-        var teacher2 = {
-            image: 'images/nowoczesny_instruktor2.png',
-            name: 'Pablo Martinez',
-            description: 'Wicemistrz Europy w tańcu nowoczesnym. Instruktor od siedmiu lat.'
-        };
-        var teacher3 = {
-            image: 'images/nowoczesny_instruktor3.png',
-            name: 'Aleksandra Jutrzenka',
-            description: 'Występowała jako tancerka w trzech edycjach "Tańca z gwiazdami", dwukrotnie przechodząc do finału. Instruktorka od dziesięciu lat.'
-        };
-        modernTeachers[0] = teacher1;
-        modernTeachers[1] = teacher2;
-        modernTeachers[2] = teacher3;
+    //MODERN
+    var modernTeachers = [];
+    modernTeachers[0] = {
+        image: 'images/nowoczesny_instruktor1.png',
+        name: 'Katarzyna Kowalska',
+        description: 'Fascynuje się tańcem od dziecka. Pracuje jako instruktorka tańca nowoczesnego od czterech lat.'
+    };
+    modernTeachers[1] = {
+        image: 'images/nowoczesny_instruktor2.png',
+        name: 'Pablo Martinez',
+        description: 'Wicemistrz Europy w tańcu nowoczesnym. Instruktor od siedmiu lat.'
+    };
+    modernTeachers[2] = {
+        image: 'images/nowoczesny_instruktor3.png',
+        name: 'Aleksandra Jutrzenka',
+        description: 'Występowała jako tancerka w trzech edycjach "Tańca z gwiazdami", dwukrotnie przechodząc do finału. Instruktorka od dziesięciu lat.'
+    };
 
+    var loadModernDance = function() {
         teachers = modernTeachers;
 
         video = 'https://www.youtube.com/embed/VqRd97i8MNU';
@@ -45,7 +43,7 @@ appServices.service('activitiesService', function() {
     };
 
     var loadSpecialOccasionDance = function() {
-        
+
     };
     return {
         loadModernDance: loadModernDance,
