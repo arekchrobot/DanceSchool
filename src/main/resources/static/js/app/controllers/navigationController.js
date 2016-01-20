@@ -7,6 +7,8 @@ appControllers.controller('navigationController',['$rootScope','$scope', '$ancho
         $rootScope.authenticated = true;
     };
     
+    $scope.isCollapsed = true;
+    
     $scope.logout = function() {
         $rootScope.authenticated = false;
     };
