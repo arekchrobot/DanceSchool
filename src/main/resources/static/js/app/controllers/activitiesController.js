@@ -16,7 +16,7 @@ appControllers.controller('activitiesController',['$scope', '$rootScope','$sce',
         return window.btoa( binary );
     };
     
-    $http.get('http://localhost:8080/image', {responseType: "arraybuffer"}).success(function(data){
+    $http.get('https://localhost:8443/image', {responseType: "arraybuffer"}).success(function(data){
         $scope.testImg = 'data:image/png;base64,' + arrayBufferToBase64(data);
         //alert(data);
         //$scope.testImg = data;
