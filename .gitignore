@@ -21,3 +21,7 @@ mvnw
 .idea/**
 *.iml
 /target/
+
+# Other files
+*.odt
+*.pdf
