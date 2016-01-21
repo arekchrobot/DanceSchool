@@ -15,13 +15,15 @@ appControllers.controller('activitiesController',['$scope', '$rootScope','$sce',
         }
         return window.btoa( binary );
     };
-    
+
     $http.get('http://localhost:8080/image', {responseType: "arraybuffer"}).success(function(data){
         $scope.testImg = 'data:image/png;base64,' + arrayBufferToBase64(data);
-        //alert(data);
-        //$scope.testImg = data;
     }).error(function(data) {
         alert('OH FUCK!');
+    });
+
+    $http.get('http://localhost:8080/test').success(function(response) {
+       $scope.wtf = response;
     });
 
     $scope.teachers = activitiesService.getTeachers();
