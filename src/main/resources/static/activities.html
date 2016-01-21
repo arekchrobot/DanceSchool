@@ -30,8 +30,11 @@
     <!-- /.row -->
     
     <img ng-src="{{testImg}}" border="0"/>
-
+    <br/>
     <img ng-src="data:image/png;base64,{{wtf.image}}" border="0"/>
+    <br/>
+    <img ng-repeat="myImage in wtf2.gallery" ng-src="data:image/png;base64,{{myImage}}" border="0"/>
+    
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">Instruktorzy</h2>

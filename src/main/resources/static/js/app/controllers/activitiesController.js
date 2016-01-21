@@ -25,6 +25,10 @@ appControllers.controller('activitiesController',['$scope', '$rootScope','$sce',
     $http.get('http://localhost:8080/test').success(function(response) {
        $scope.wtf = response;
     });
+    
+    $http.get('http://localhost:8080/test2').success(function(response) {
+       $scope.wtf2 = response;
+    });
 
     $scope.teachers = activitiesService.getTeachers();
     $scope.video =  $sce.trustAsResourceUrl(activitiesService.getVideo());

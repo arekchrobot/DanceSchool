@@ -52,15 +52,23 @@ public class DemoApplication {
             throw new RuntimeException(e);
         }
     }
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    @RequestMapping(value = "/test2", method = RequestMethod.GET)
     public TestClass2 getData2() {
         try {
-            InputStream inputStream = this.getClass().getResourceAsStream("/static/images/nowoczesny_instruktor1.png");
+            TestClass2 clazz = new TestClass2();
+            
+            InputStream inputStream = this.getClass().getResourceAsStream("/static/images/nowoczesny_instruktor2.png");
             BufferedImage bufferedImage = ImageIO.read(inputStream);
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             ImageIO.write(bufferedImage, "png", byteArrayOutputStream);
-            TestClass2 clazz = new TestClass2();
-//            clazz.setImage(byteArrayOutputStream.toByteArray());
+            clazz.gallery.add(byteArrayOutputStream.toByteArray());
+            
+            InputStream inputStream2 = this.getClass().getResourceAsStream("/static/images/nowoczesny_instruktor3.png");
+            BufferedImage bufferedImage2 = ImageIO.read(inputStream2);
+            ByteArrayOutputStream byteArrayOutputStream2 = new ByteArrayOutputStream();
+            ImageIO.write(bufferedImage2, "png", byteArrayOutputStream2);
+            clazz.gallery.add(byteArrayOutputStream2.toByteArray());
+            
             return clazz;
         } catch (IOException e) {
             throw new RuntimeException(e);
