@@ -2,10 +2,12 @@ package pl.agh.arc;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -16,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
-@RestController
+@EnableJpaRepositories
 public class DemoApplication {
 
     public static void main(String[] args) {
