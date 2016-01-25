@@ -47,3 +47,6 @@ INSERT INTO lesson(id, week_day, hour_, instructor_id, version) VALUES (14, 'WED
 INSERT INTO lesson(id, week_day, hour_, instructor_id, version) VALUES (15, 'WEDNESDAY', '16:00',(SELECT id FROM instructor WHERE name_ = 'Tatiana Okupnik'), 1);
 INSERT INTO lesson(id, week_day, hour_, instructor_id, version) VALUES (16, 'THURSDAY', '18:00',(SELECT id FROM instructor WHERE name_ = 'Dominika Macierewicz'), 1);
 INSERT INTO lesson(id, week_day, hour_, instructor_id, version) VALUES (17, 'FRIDAY', '16:00',(SELECT id FROM instructor WHERE name_ = 'Tatiana Okupnik'), 1);
+
+INSERT INTO news(id, title, description, image, version) VALUES (0, 'Nowe zajęcia z tańca nowoczesnego', 'Od stycznia 2016 roku oferta tańca nowoczesnego zostanie powiększona. Będzie więcej zajęć dla zaawansowanych oraz możliwość wzięcia udziału w warsztatch ze światowej sławy tancerzami - nawet z samego Brooklynu!', 'aktualnosci1.jpg', 1);
+INSERT INTO news(id, title, description, image, version) VALUES (1, 'Zwycięstwo w międzynarodowych zawodach juniorów w tańcu towarzyskim', 'Dnia 25.10.2015 para z naszej szkoły wygrała międzynarodowe zawody tańca towarzyskiego w kategorii junirów. Pokonali oni wiele znakomitych par. Przygotowania prowadził {IMIE}, natomiast choregorafią zajęła się {IMIE}. Serdecznie gratulujemy naszej parze! Oby tak dalej.', 'aktualnosci2.jpg', 1);

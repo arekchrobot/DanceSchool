@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import pl.agh.arc.domain.News;
 
 /**
  * Created by Arek on 2016-01-24.
@@ -45,6 +46,17 @@ public class ImageResolver {
         }
 
         return gallery;
+    }
+    
+    public byte[] resolveImage(News news) {
+        StringBuilder newsFilepath = new StringBuilder();
+        newsFilepath.append(storedDataProperties.getBasePath());
+        newsFilepath.append(storedDataProperties.getNewsPath());
+        newsFilepath.append(news.getId());
+        newsFilepath.append("/");
+        newsFilepath.append(news.getImage());
+        
+        return resolveImage(newsFilepath.toString(), "jpg");
     }
 
     private byte[] resolveImage(String filepath, String filetype) {

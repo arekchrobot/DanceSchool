@@ -13,6 +13,7 @@ public class StoredDataProperties {
     private String basePath = "/";
     private String activityPath = "/";
     private String instructorPath = "/";
+    private String newsPath = "/";
 
     public String getBasePath() {
         return basePath;
@@ -36,5 +37,13 @@ public class StoredDataProperties {
 
     public void setInstructorPath(String instructorPath) {
         this.instructorPath = instructorPath;
+    }
+
+    public String getNewsPath() {
+        return newsPath;
+    }
+
+    public void setNewsPath(String newsPath) {
+        this.newsPath = newsPath;
     }
 }
