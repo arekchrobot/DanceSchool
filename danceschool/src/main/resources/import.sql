@@ -27,26 +27,26 @@ INSERT INTO instructor(id, name_, description, image, activity_id, version) VALU
 INSERT INTO instructor(id, name_, description, image, activity_id, version) VALUES (7, 'Justyna Kwak', 'Specjalizuje się w tańcach studniówkowych. Pottrafi stworzyć zapierające w dech piersiach wariacje, które zapierają dech w piersi.', 'specjalne_instruktor2.png', (SELECT id FROM activity WHERE name_ = 'Specjalne okazje'), 1);
 INSERT INTO instructor(id, name_, description, image, activity_id, version) VALUES (8, 'Tatiana Okupnik', 'Wieloletnia instruktorka, tancerka polskich tradycyjnych tańców. Jej doświadczenie pozwala jej na dostosowanie się do każdej imprezy okolicznościowej', 'specjalne_instruktor3.png', (SELECT id FROM activity WHERE name_ = 'Specjalne okazje'), 1);
 
-INSERT INTO lesson(id, week_day, hour_, instructor_id, version) VALUES (0, 'MONDAY', '17:00',(SELECT id FROM instructor WHERE name_ = 'Pablo Martinez'), 1);
-INSERT INTO lesson(id, week_day, hour_, instructor_id, version) VALUES (1, 'TUESDAY', '18:00',(SELECT id FROM instructor WHERE name_ = 'Katarzyna Kowalska'), 1);
-INSERT INTO lesson(id, week_day, hour_, instructor_id, version) VALUES (2, 'WEDNESDAY', '17:00',(SELECT id FROM instructor WHERE name_ = 'Pablo Martinez'), 1);
-INSERT INTO lesson(id, week_day, hour_, instructor_id, version) VALUES (3, 'WEDNESDAY', '16:00',(SELECT id FROM instructor WHERE name_ = 'Aleksandra Jutrzenka'), 1);
-INSERT INTO lesson(id, week_day, hour_, instructor_id, version) VALUES (4, 'THURSDAY', '18:00',(SELECT id FROM instructor WHERE name_ = 'Katarzyna Kowalska'), 1);
-INSERT INTO lesson(id, week_day, hour_, instructor_id, version) VALUES (5, 'FRIDAY', '16:00',(SELECT id FROM instructor WHERE name_ = 'Aleksandra Jutrzenka'), 1);
+INSERT INTO lesson(id, week_day, hour_, instructor_id, price_per_hour, version) VALUES (0, 'MONDAY', '17:00',(SELECT id FROM instructor WHERE name_ = 'Pablo Martinez'), 25.0, 1);
+INSERT INTO lesson(id, week_day, hour_, instructor_id, price_per_hour, version) VALUES (1, 'TUESDAY', '18:00',(SELECT id FROM instructor WHERE name_ = 'Katarzyna Kowalska'), 27.5, 1);
+INSERT INTO lesson(id, week_day, hour_, instructor_id, price_per_hour, version) VALUES (2, 'WEDNESDAY', '17:00',(SELECT id FROM instructor WHERE name_ = 'Pablo Martinez'), 25.0, 1);
+INSERT INTO lesson(id, week_day, hour_, instructor_id, price_per_hour, version) VALUES (3, 'WEDNESDAY', '16:00',(SELECT id FROM instructor WHERE name_ = 'Aleksandra Jutrzenka'), 28.0, 1);
+INSERT INTO lesson(id, week_day, hour_, instructor_id, price_per_hour, version) VALUES (4, 'THURSDAY', '18:00',(SELECT id FROM instructor WHERE name_ = 'Katarzyna Kowalska'), 25.0, 1);
+INSERT INTO lesson(id, week_day, hour_, instructor_id, price_per_hour, version) VALUES (5, 'FRIDAY', '16:00',(SELECT id FROM instructor WHERE name_ = 'Aleksandra Jutrzenka'), 28.0, 1);
 
-INSERT INTO lesson(id, week_day, hour_, instructor_id, version) VALUES (6, 'MONDAY', '17:00',(SELECT id FROM instructor WHERE name_ = 'Martin Egurrola'), 1);
-INSERT INTO lesson(id, week_day, hour_, instructor_id, version) VALUES (7, 'TUESDAY', '18:00',(SELECT id FROM instructor WHERE name_ = 'Amanda Piasecka'), 1);
-INSERT INTO lesson(id, week_day, hour_, instructor_id, version) VALUES (8, 'WEDNESDAY', '17:00',(SELECT id FROM instructor WHERE name_ = 'Martin Egurrola'), 1);
-INSERT INTO lesson(id, week_day, hour_, instructor_id, version) VALUES (9, 'WEDNESDAY', '16:00',(SELECT id FROM instructor WHERE name_ = 'Drake Graham'), 1);
-INSERT INTO lesson(id, week_day, hour_, instructor_id, version) VALUES (10, 'THURSDAY', '18:00',(SELECT id FROM instructor WHERE name_ = 'Amanda Piasecka'), 1);
-INSERT INTO lesson(id, week_day, hour_, instructor_id, version) VALUES (11, 'FRIDAY', '16:00',(SELECT id FROM instructor WHERE name_ = 'Drake Graham'), 1);
+INSERT INTO lesson(id, week_day, hour_, instructor_id, price_per_hour, version) VALUES (6, 'MONDAY', '17:00',(SELECT id FROM instructor WHERE name_ = 'Martin Egurrola'), 25.0, 1);
+INSERT INTO lesson(id, week_day, hour_, instructor_id, price_per_hour, version) VALUES (7, 'TUESDAY', '18:00',(SELECT id FROM instructor WHERE name_ = 'Amanda Piasecka'), 23.0, 1);
+INSERT INTO lesson(id, week_day, hour_, instructor_id, price_per_hour, version) VALUES (8, 'WEDNESDAY', '17:00',(SELECT id FROM instructor WHERE name_ = 'Martin Egurrola'), 25.0, 1);
+INSERT INTO lesson(id, week_day, hour_, instructor_id, price_per_hour, version) VALUES (9, 'WEDNESDAY', '16:00',(SELECT id FROM instructor WHERE name_ = 'Drake Graham'), 25.0, 1);
+INSERT INTO lesson(id, week_day, hour_, instructor_id, price_per_hour, version) VALUES (10, 'THURSDAY', '18:00',(SELECT id FROM instructor WHERE name_ = 'Amanda Piasecka'), 23.0, 1);
+INSERT INTO lesson(id, week_day, hour_, instructor_id, price_per_hour, version) VALUES (11, 'FRIDAY', '16:00',(SELECT id FROM instructor WHERE name_ = 'Drake Graham'), 25.0, 1);
 
-INSERT INTO lesson(id, week_day, hour_, instructor_id, version) VALUES (12, 'MONDAY', '17:00',(SELECT id FROM instructor WHERE name_ = 'Justyna Kwak'), 1);
-INSERT INTO lesson(id, week_day, hour_, instructor_id, version) VALUES (13, 'TUESDAY', '18:00',(SELECT id FROM instructor WHERE name_ = 'Dominika Macierewicz'), 1);
-INSERT INTO lesson(id, week_day, hour_, instructor_id, version) VALUES (14, 'WEDNESDAY', '17:00',(SELECT id FROM instructor WHERE name_ = 'Justyna Kwak'), 1);
-INSERT INTO lesson(id, week_day, hour_, instructor_id, version) VALUES (15, 'WEDNESDAY', '16:00',(SELECT id FROM instructor WHERE name_ = 'Tatiana Okupnik'), 1);
-INSERT INTO lesson(id, week_day, hour_, instructor_id, version) VALUES (16, 'THURSDAY', '18:00',(SELECT id FROM instructor WHERE name_ = 'Dominika Macierewicz'), 1);
-INSERT INTO lesson(id, week_day, hour_, instructor_id, version) VALUES (17, 'FRIDAY', '16:00',(SELECT id FROM instructor WHERE name_ = 'Tatiana Okupnik'), 1);
+INSERT INTO lesson(id, week_day, hour_, instructor_id, price_per_hour, version) VALUES (12, 'MONDAY', '17:00',(SELECT id FROM instructor WHERE name_ = 'Justyna Kwak'), 22.5, 1);
+INSERT INTO lesson(id, week_day, hour_, instructor_id, price_per_hour, version) VALUES (13, 'TUESDAY', '18:00',(SELECT id FROM instructor WHERE name_ = 'Dominika Macierewicz'), 25.0, 1);
+INSERT INTO lesson(id, week_day, hour_, instructor_id, price_per_hour, version) VALUES (14, 'WEDNESDAY', '17:00',(SELECT id FROM instructor WHERE name_ = 'Justyna Kwak'), 22.5, 1);
+INSERT INTO lesson(id, week_day, hour_, instructor_id, price_per_hour, version) VALUES (15, 'WEDNESDAY', '16:00',(SELECT id FROM instructor WHERE name_ = 'Tatiana Okupnik'), 25.0, 1);
+INSERT INTO lesson(id, week_day, hour_, instructor_id, price_per_hour, version) VALUES (16, 'THURSDAY', '18:00',(SELECT id FROM instructor WHERE name_ = 'Dominika Macierewicz'), 25.0, 1);
+INSERT INTO lesson(id, week_day, hour_, instructor_id, price_per_hour, version) VALUES (17, 'FRIDAY', '16:00',(SELECT id FROM instructor WHERE name_ = 'Tatiana Okupnik'), 25.0, 1);
 
 INSERT INTO news(id, title, description, image, version) VALUES (0, 'Nowe zajęcia z tańca nowoczesnego', 'Od stycznia 2016 roku oferta tańca nowoczesnego zostanie powiększona. Będzie więcej zajęć dla zaawansowanych oraz możliwość wzięcia udziału w warsztatch ze światowej sławy tancerzami - nawet z samego Brooklynu!', 'aktualnosci1.jpg', 1);
 INSERT INTO news(id, title, description, image, version) VALUES (1, 'Zwycięstwo w międzynarodowych zawodach juniorów w tańcu towarzyskim', 'Dnia 25.10.2015 para z naszej szkoły wygrała międzynarodowe zawody tańca towarzyskiego w kategorii junirów. Pokonali oni wiele znakomitych par. Przygotowania prowadził {IMIE}, natomiast choregorafią zajęła się {IMIE}. Serdecznie gratulujemy naszej parze! Oby tak dalej.', 'aktualnosci2.jpg', 1);

@@ -29,6 +29,9 @@ public class Lesson extends BaseEntity {
     
     @ManyToOne(fetch = FetchType.EAGER)
     private Instructor instructor;
+    
+    @Column(name = "price_per_hour")
+    private double pricePerHour;
 
     public WeekDay getWeekDay() {
         return weekDay;
@@ -52,5 +55,13 @@ public class Lesson extends BaseEntity {
 
     public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
+    }
+
+    public double getPricePerHour() {
+        return pricePerHour;
+    }
+
+    public void setPricePerHour(double pricePerHour) {
+        this.pricePerHour = pricePerHour;
     }
 }
