@@ -1,0 +1,134 @@
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">O zajęciach
+                <small>{{danceType.name}}</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="index.html">Strona główna</a>
+                </li>
+                <li class="active">{{danceType.name}}</li>
+            </ol>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <!-- Intro Content -->
+    <div class="row">
+        <div class="col-md-6">
+            <iframe width="500" height="350" frameBorder="0" ng-src="{{video}}"></iframe>
+        </div>
+        <div class="col-md-6">
+            <h2>{{danceType.name}}</h2>
+            <p> {{danceType.description}}</p>
+
+        </div>
+    </div>
+    <!-- /.row -->
+    
+    <img ng-src="{{testImg}}" border="0"/>
+    <br/>
+    <img ng-src="data:image/png;base64,{{wtf.image}}" border="0"/>
+    <br/>
+    <img ng-repeat="myImage in wtf2.gallery" ng-src="data:image/png;base64,{{myImage}}" border="0"/>
+    
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">Instruktorzy</h2>
+        </div>
+        <div ng-repeat="teacher in teachers">
+            <div class="col-md-4 text-center">
+                <div class="thumbnail">
+                    <img class="img-responsive" src="{{teacher.image}}" alt="">
+                    <div class="caption">
+                        <h3>{{teacher.name}}<br>
+                        </h3>
+                        <p>{{teacher.description}}</p>
+                        <ul class="list-inline">
+                            <li><a href="#"><i class="fa fa-2x fa-facebook-square"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-2x fa-linkedin-square"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-2x fa-twitter-square"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Default panel contents -->
+    <div class="panel panel-default">
+        <div class="panel-heading">Panel zapisu</div>
+
+        <!-- Table -->
+        <table class="table">
+            <tr>
+                <td>Dzień tygodnia</td>
+                <td>Godzina</td>
+                <td>Prowadzący</td>
+                <td> </td>
+            </tr>
+            <tr>
+                <td>Poniedziałek</td>
+                <td>17:00</td>
+                <td>{{teachers[1].name}}</td>
+                <td><button id="b1" type="submit" class="btn btn-primary"  ng-click="alert('b1')"
+                        >Zapisz się</button></td>
+            </tr>
+            <tr>
+                <td>Wtorek</td>
+                <td>18:00</td>
+                <td>{{teachers[0].name}}</td>
+                <td><button id="b2" type="submit" class="btn btn-primary"  ng-click="alert('b2')"
+                        >Zapisz się</button></td>
+            </tr>
+            <tr>
+                <td>Środa</td>
+                <td>17:00</td>
+                <td>{{teachers[1].name}}</td>
+               <td><button id="b3" type="submit" class="btn btn-primary"  ng-click="alert('b3')"
+                        >Zapisz się</button></td>
+            </tr>
+            <tr>
+            <tr>
+                <td>Środa</td>
+                <td>16:00</td>
+                <td>{{teachers[2].name}}</td>
+                <td><button id="b4" type="submit" class="btn btn-primary"  ng-click="alert('b4')"
+                        >Zapisz się</button></td>
+            </tr>
+            <tr>
+                <td>Czwartek</td>
+                <td>18:00</td>
+                <td>{{teachers[0].name}}</td>
+                <td><button id="b5" type="submit" class="btn btn-primary"  ng-click="alert('b5')"
+                        >Zapisz się</button></td>
+            </tr>
+            <tr>
+                <td>Piątek</td>
+                <td>16:00</td>
+                <td>{{teachers[2].name}}</td>
+               <td><button id="b6" type="submit" class="btn btn-primary"  ng-click="alert('b6')"
+                        >Zapisz się</button></td>
+            </tr>
+        </table>
+    </div>
+    <!-- Team Members -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">Galeria</h2>
+        </div>
+        <div ng-repeat="image in gallery">
+            <div class="col-md-4 text-center">
+                <div class="thumbnail">
+                    <img class="img-responsive" src="{{image}}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>

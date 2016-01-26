@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Szkoła Tańca</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="css/others.css"/>
+        <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">-->
+        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <style type="text/css">
+            [ng\:cloak], [ng-cloak], .ng-cloak {
+                display: none !important;
+            }
+            .angular-google-map-container { 
+                height: 400px; 
+            }
+            #toTop {
+                display: block;
+                position: fixed;
+                top: 50%;
+                right: 0;
+                padding: 10px;
+                border: 1px solid gray;
+                border-radius: 4px;
+                background: white;
+            }
+        </style>
+    </head>
+    <body ng-app="hello" ng-cloak class="ng-cloak">
+        <div id="topDiv" style="position: fixed; top: 0%"></div>
+        <nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="navigationController" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1" ng-click="isCollapsed = !isCollapsed">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#/home"><img height="36px" src="images/logo3.png"/></a>
+                </div>
+                <div uib-collapse="isCollapsed" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown" uib-dropdown is-open="status.isopen">
+                            <a class="dropdown-toggle" data-toggle="dropdown" uib-dropdown-toggle>Zajęcia <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="#/activities" ng-click="loadBallroomDance()">Taniec towarzyski</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#/activities" ng-click="loadModernDance()">Taniec nowoczesny</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#/activities" ng-click="loadSpecialOccasionDance()">Specjane okazje</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a class="menu-item" href="#/priceList">Cennik</a></li>
+                        <li><a class="menu-item" href="#/about">O nas</a></li>
+                        <li><a class="menu-item" href="#/contact">Kontakt</a></li>
+                        <!--<li><a class="menu-item" href="" ng-click="login()" ng-hide="authenticated">Login</a></li>-->
+                        <!--<li><a class="menu-item" href="" ng-click="logout()" ng-show="authenticated">Logout</a></li>-->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!--<div class="container">-->
+        <div ng-view></div>
+
+        <a id="toTop" class="btn btn-default" scroll-to="topDiv"><i class="fa fa-fw fa-chevron-up"></i> Powrót</a>
+
+        <div class="container">
+            <!-- Footer -->
+            <footer>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p style="font-size: 0.8em;">Copyright &copy; Wólczańska School Dance 2012-2015</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="images/logo2.png"/>
+                    </div>
+                    <div class="col-md-4">
+                        <h4 style="font-size: 0.8em;">Kontakt</h4>
+                        <p style="font-size: 0.7em;">
+                            Wólczańska 256<br>95-111 Łódź<br>
+                        </p>
+                        <p style="font-size: 0.7em;"><i class="fa fa-phone"></i>
+                            <abbr title="Telefon">Telefon</abbr>: +48 42 234 34 45</p>
+                        <p style="font-size: 0.7em;"><i class="fa fa-envelope-o"></i>
+                            <abbr title="Email">Email</abbr>: <a href="mailto:szkolatanca@taniec.com">szkolatanca@taniec.com</a>
+                        </p>
+                        <p style="font-size: 0.7em;"><i class="fa fa-clock-o"></i>
+                            <abbr title="Godziny otwarcia">Godziny otwarcia</abbr>: Poniedziałek - Piątek: 9:00 - 21:00</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <!--<script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>-->
+        <script src="js/others.js"></script>
+        <script src="js/angular-app.js"></script>
+    </body>
+</html>
