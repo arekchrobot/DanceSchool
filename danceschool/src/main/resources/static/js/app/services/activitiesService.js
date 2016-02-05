@@ -124,6 +124,7 @@ appServices.service('activitiesService', function ($http, dateCacheService, Acti
                             return null;
                         });
             }
+            return modernActivity;
         }
     };
     //END OF NEW VERSION
@@ -139,6 +140,7 @@ appServices.service('activitiesService', function ($http, dateCacheService, Acti
                 case ActivityType.SPECIAL_OCCASION:
             }
         },
+        loadModernActivity: loadModernActivity,
         getTeachers: function () {
             return teachers;
         },

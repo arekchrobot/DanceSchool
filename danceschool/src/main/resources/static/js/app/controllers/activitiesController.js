@@ -9,7 +9,7 @@ appControllers.controller('activitiesController',['$scope', '$rootScope','$sce',
     $scope.activity = {};
     
     var loadActivity = function(activityType) {
-        activitiesService.loadActivity(activityType)
+        activitiesService.loadModernActivity
                 .async()
                 .then(function(data) {
                     alert('wooohoo!!');
