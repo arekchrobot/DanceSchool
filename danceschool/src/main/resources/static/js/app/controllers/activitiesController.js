@@ -1,9 +1,22 @@
 'use strict';
 
-appControllers.controller('activitiesController',['$scope', '$rootScope','$sce', '$http', 'activitiesService', function($scope, $rootScope, $sce, $http, activitiesService){
+appControllers.controller('activitiesController',['$scope', '$rootScope','$sce', '$http', 'activitiesService', 'ActivityType', function($scope, $rootScope, $sce, $http, activitiesService, ActivityType){
     $scope.alert = function(id){
         alert('Dziękujemy za zapisanie się');
         $('#'+id).hide();
+    };
+    
+    $scope.activity = {};
+    
+    var loadActivity = function(activityType) {
+        activitiesService.loadActivity(activityType)
+                .async()
+                .then(function(data) {
+                    alert('wooohoo!!');
+                    $scope.activity = data;
+                }, function(data) {
+                    alert('DAAMN!!1');
+                });
     };
     
     function arrayBufferToBase64(buffer) {
@@ -19,7 +32,7 @@ appControllers.controller('activitiesController',['$scope', '$rootScope','$sce',
     $http.get('http://localhost:8080/image', {responseType: "arraybuffer"}).success(function(data){
         $scope.testImg = 'data:image/png;base64,' + arrayBufferToBase64(data);
     }).error(function(data) {
-        alert('OH FUCK!');
+//        alert('OH FUCK!');
     });
 
     $http.get('http://localhost:8080/test').success(function(response) {
@@ -45,6 +58,10 @@ appControllers.controller('activitiesController',['$scope', '$rootScope','$sce',
         for (var id=1; id <7; id++) {
             $('#b'+id).show();
         }
+    });
+    
+    $rootScope.$on('modernActivity', function() {
+        loadActivity(ActivityType.MODERN);
     });
 
 }]);

@@ -41,6 +41,7 @@ appControllers.controller('navigationController',['$rootScope','$scope', '$ancho
     $rootScope.loadModernDance = function() {
         activitiesService.loadModernDance();
         $rootScope.$broadcast('activitiesLoaded');
+        $rootScope.$broadcast('modernActivity');
     };
     $rootScope.loadBallroomDance = function() {
         activitiesService.loadBallroomDance();
@@ -50,4 +51,8 @@ appControllers.controller('navigationController',['$rootScope','$scope', '$ancho
         activitiesService.loadSpecialOccasionDance();
         $rootScope.$broadcast('activitiesLoaded');
     };
+    
+//    $rootScope.loadModernActivity = function() {
+//        $rootScope.$broadcast('modernActivity');
+//    }
 }]);

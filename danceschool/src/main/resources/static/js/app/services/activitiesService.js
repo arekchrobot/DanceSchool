@@ -1,4 +1,4 @@
-appServices.service('activitiesService', function() {
+appServices.service('activitiesService', function ($http, dateCacheService, ActivityType, REST_URL) {
     var teachers = [];
     var video = '';
     var danceType = {
@@ -61,7 +61,7 @@ appServices.service('activitiesService', function() {
         description: 'Wieloletnia instruktorka, tancerka polskich tradycyjnych tańców. Jej doświadczenie pozwala jej na dostosowanie się do każdej imprezy okolicznościowej'
     };
 
-    var loadModernDance = function() {
+    var loadModernDance = function () {
         teachers = modernTeachers;
 
         video = 'https://www.youtube.com/embed/VqRd97i8MNU';
@@ -74,7 +74,7 @@ appServices.service('activitiesService', function() {
         gallery[2] = 'images/nowoczesny3.png'
     };
 
-    var loadBallroomDance = function() {
+    var loadBallroomDance = function () {
         teachers = ballroomTeachers;
 
         video = 'https://www.youtube.com/embed/i3vsiiRK5GU';
@@ -87,7 +87,7 @@ appServices.service('activitiesService', function() {
         gallery[2] = 'images/towarzyski3.png';
     };
 
-    var loadSpecialOccasionDance = function() {
+    var loadSpecialOccasionDance = function () {
         teachers = specialOccasionTeachers;
 
         video = 'https://www.youtube.com/embed/1LI-62KERsU';
@@ -99,23 +99,59 @@ appServices.service('activitiesService', function() {
         gallery[1] = 'images/specjalne2.png';
         gallery[2] = 'images/specjalne3.png';
     };
+
+
+    //NEW VERSION
+    var modernActivity;
+    var modernActivityCache;
+
+    var ballroomActivity;
+    var modernBallroomCache;
+
+    var specialOcassionActivity;
+    var specialOcassionCache;
+
+    var loadModernActivity = {
+        async: function () {
+            if (!modernActivity || dateCacheService.shouldSynchronize(modernActivityCache)) {
+                modernActivity = $http.get(REST_URL + 'activity?activity_name=Taniec+nowoczesny')
+                        .success(function (data) {
+                            modernActivityCache = new Date();
+                            return data;
+                        })
+                        .error(function (data) {
+                            alert('FUCKING ERROR FOR FUCKS SAKE!!!');
+                            return null;
+                        });
+            }
+        }
+    };
+    //END OF NEW VERSION
     return {
         loadModernDance: loadModernDance,
         loadBallroomDance: loadBallroomDance,
         loadSpecialOccasionDance: loadSpecialOccasionDance,
-        getTeachers: function() {
+        loadActivity: function(activityType) {
+            switch(activityType) {
+                case ActivityType.MODERN:
+                    return loadModernActivity;
+                case ActivityType.BALLROOM:
+                case ActivityType.SPECIAL_OCCASION:
+            }
+        },
+        getTeachers: function () {
             return teachers;
         },
         getVideo: function () {
             return video;
         },
-        getDanceType: function() {
+        getDanceType: function () {
             return danceType;
         },
-        getGallery: function() {
+        getGallery: function () {
             return gallery;
         },
-        getAllTeachers: function() {
+        getAllTeachers: function () {
             return ballroomTeachers.concat(modernTeachers, specialOccasionTeachers);
         }
     };

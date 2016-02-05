@@ -17,6 +17,7 @@
     </group>
     <group name="angular-app">
         <js>file:${project.basedir}/src/main/resources/static/js/app/config.js</js>
+        <js>file:${project.basedir}/src/main/resources/static/js/app/services/dateCacheService.js</js>
         <js>file:${project.basedir}/src/main/resources/static/js/app/services/activitiesService.js</js>
         <js>file:${project.basedir}/src/main/resources/static/js/app/controllers/mainController.js</js>
         <js>file:${project.basedir}/src/main/resources/static/js/app/controllers/navigationController.js</js>
