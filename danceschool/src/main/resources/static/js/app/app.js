@@ -1,13 +1,13 @@
-angular.module('hello',['ngRoute','appControllers', 'smoothScroll'])
-    .config(['$routeProvider',function ($routeProvider){
+angular.module('hello', ['ngRoute', 'appControllers', 'smoothScroll'])
+    .config(['$routeProvider', '$sceDelegateProvider', function ($routeProvider, $sceDelegateProvider) {
         $routeProvider
-            .when('/',{
+            .when('/', {
                 templateUrl: 'main.html',
                 controller: 'mainController'
             })
             .when('/activities', {
                 templateUrl: 'activities.html',
-                controller: 'activitiesController'  
+                controller: 'activitiesController'
             })
             .when('/contact', {
                 templateUrl: 'contact.html',
@@ -22,4 +22,10 @@ angular.module('hello',['ngRoute','appControllers', 'smoothScroll'])
                 controller: 'priceListController'
             })
             .otherwise('/');
+
+        $sceDelegateProvider
+            .resourceUrlWhitelist([
+                'self',
+                'https://www.youtube.com/embed/**'
+            ]);
     }]);

@@ -1,4 +1,4 @@
-appServices.service('activitiesService', function ($http, dateCacheService, ActivityType, REST_URL, $log) {
+appServices.service('activitiesService', function ($http, dateCacheService, ActivityType, REST_URL, $log, $sce) {
     var teachers = [];
     var video = '';
     var danceType = {
@@ -108,8 +108,8 @@ appServices.service('activitiesService', function ($http, dateCacheService, Acti
     var ballroomActivity = null;
     var ballroomActivityCache = null;
 
-    var specialOcassionActivity = null;
-    var specialOcassionActivityCache = null;
+    var specialOccassionActivity = null;
+    var specialOccassionActivityCache = null;
 
     var loadModernActivity = {
         async: function () {
@@ -117,7 +117,7 @@ appServices.service('activitiesService', function ($http, dateCacheService, Acti
                 modernActivity = $http.get(REST_URL + 'activity?activity_name=Taniec+nowoczesny')
                     .then(function (data) {
                         modernActivityCache = new Date();
-                        return data;
+                        return data.data;
                     },
                     function (data) {
                         $log.error('FUCKING ERROR FOR FUCKS SAKE!!!');
@@ -134,7 +134,7 @@ appServices.service('activitiesService', function ($http, dateCacheService, Acti
                 ballroomActivity = $http.get(REST_URL + 'activity?activity_name=Taniec+towarzyski')
                     .then(function (data) {
                         ballroomActivityCache = new Date();
-                        return data;
+                        return data.data;
                     },
                     function (data) {
                         $log.error('FUCKING ERROR FOR FUCKS SAKE!!!');
@@ -147,18 +147,18 @@ appServices.service('activitiesService', function ($http, dateCacheService, Acti
 
     var loadSpecialOccassionActivity = {
         async: function () {
-            if (specialOcassionActivity == null || dateCacheService.shouldSynchronize(specialOcassionActivityCache)) {
-                specialOcassionActivity = $http.get(REST_URL + 'activity?activity_name=Specjalne+okazje')
+            if (specialOccassionActivity == null || dateCacheService.shouldSynchronize(specialOccassionActivityCache)) {
+                specialOccassionActivity = $http.get(REST_URL + 'activity?activity_name=Specjalne+okazje')
                     .then(function (data) {
-                        specialOcassionActivityCache = new Date();
-                        return data;
+                        specialOccassionActivityCache = new Date();
+                        return data.data;
                     },
                     function (data) {
                         $log.error('FUCKING ERROR FOR FUCKS SAKE!!!');
                         return null;
                     });
             }
-            return specialOcassionActivity;
+            return specialOccassionActivity;
         }
     };
 

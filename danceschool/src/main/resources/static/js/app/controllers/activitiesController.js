@@ -12,8 +12,7 @@ appControllers.controller('activitiesController', ['$scope', '$rootScope', '$sce
         activitiesService.loadActivity(activityType)
             .async()
             .then(function (data) {
-                $log.info(data.data);
-                $scope.activity = data.data;
+                $scope.activity = data;
             },
             function (data) {
                 $log.info('DAAMN!!1');
@@ -32,19 +31,19 @@ appControllers.controller('activitiesController', ['$scope', '$rootScope', '$sce
         return window.btoa(binary);
     };
 
-    $http.get('http://localhost:8080/image', {responseType: "arraybuffer"}).success(function (data) {
-        $scope.testImg = 'data:image/png;base64,' + arrayBufferToBase64(data);
-    }).error(function (data) {
-//        alert('OH FUCK!');
-    });
-
-    $http.get('http://localhost:8080/test').success(function (response) {
-        $scope.wtf = response;
-    });
-
-    $http.get('http://localhost:8080/test2').success(function (response) {
-        $scope.wtf2 = response;
-    });
+//    $http.get('http://localhost:8080/image', {responseType: "arraybuffer"}).success(function (data) {
+//        $scope.testImg = 'data:image/png;base64,' + arrayBufferToBase64(data);
+//    }).error(function (data) {
+////        alert('OH FUCK!');
+//    });
+//
+//    $http.get('http://localhost:8080/test').success(function (response) {
+//        $scope.wtf = response;
+//    });
+//
+//    $http.get('http://localhost:8080/test2').success(function (response) {
+//        $scope.wtf2 = response;
+//    });
 
     $scope.teachers = activitiesService.getTeachers();
     $scope.video = $sce.trustAsResourceUrl(activitiesService.getVideo());
