@@ -1,6 +1,6 @@
 'use strict';
 
-appControllers.controller('navigationController',['$rootScope','$scope', '$anchorScroll', '$location', 'activitiesService', function($rootScope, $scope, $anchorScroll, $location, activitiesService){
+appControllers.controller('navigationController',['$rootScope','$scope', '$anchorScroll', '$location', 'activitiesService', '$log', 'ActivityType', function($rootScope, $scope, $anchorScroll, $location, activitiesService, $log, ActivityType){
     $rootScope.authenticated = false;
     
     $scope.login = function() {
@@ -13,19 +13,9 @@ appControllers.controller('navigationController',['$rootScope','$scope', '$ancho
         $rootScope.authenticated = false;
     };
 
-//    $scope.items = [
-//        'The first choice!',
-//        'And another choice for you.',
-//        'but wait! A third!'
-//    ];
-
     $scope.status = {
         isopen: false
     };
-
-//    $scope.toggled = function(open) {
-//        $log.log('Dropdown is now: ', open);
-//    };
 
     $scope.toggleDropdown = function($event) {
         $event.preventDefault();
@@ -40,19 +30,21 @@ appControllers.controller('navigationController',['$rootScope','$scope', '$ancho
 
     $rootScope.loadModernDance = function() {
         activitiesService.loadModernDance();
+        $log.info("broadcast modernActivity");
+        $rootScope.activityType = ActivityType.MODERN;
+        $rootScope.$broadcast('activityChange');
         $rootScope.$broadcast('activitiesLoaded');
-        $rootScope.$broadcast('modernActivity');
     };
     $rootScope.loadBallroomDance = function() {
         activitiesService.loadBallroomDance();
+        $rootScope.activityType = ActivityType.BALLROOM;
+        $rootScope.$broadcast('activityChange');
         $rootScope.$broadcast('activitiesLoaded');
     };
     $rootScope.loadSpecialOccasionDance = function() {
         activitiesService.loadSpecialOccasionDance();
+        $rootScope.activityType = ActivityType.SPECIAL_OCCASION;
+        $rootScope.$broadcast('activityChange');
         $rootScope.$broadcast('activitiesLoaded');
     };
-    
-//    $rootScope.loadModernActivity = function() {
-//        $rootScope.$broadcast('modernActivity');
-//    }
 }]);

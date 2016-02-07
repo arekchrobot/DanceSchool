@@ -1,4 +1,4 @@
-appServices.service('activitiesService', function ($http, dateCacheService, ActivityType, REST_URL) {
+appServices.service('activitiesService', function ($http, dateCacheService, ActivityType, REST_URL, $log) {
     var teachers = [];
     var video = '';
     var danceType = {
@@ -102,45 +102,82 @@ appServices.service('activitiesService', function ($http, dateCacheService, Acti
 
 
     //NEW VERSION
-    var modernActivity;
-    var modernActivityCache;
+    var modernActivity = null;
+    var modernActivityCache = null;
 
-    var ballroomActivity;
-    var modernBallroomCache;
+    var ballroomActivity = null;
+    var ballroomActivityCache = null;
 
-    var specialOcassionActivity;
-    var specialOcassionCache;
+    var specialOcassionActivity = null;
+    var specialOcassionActivityCache = null;
 
     var loadModernActivity = {
         async: function () {
-            if (!modernActivity || dateCacheService.shouldSynchronize(modernActivityCache)) {
+            if (modernActivity == null || dateCacheService.shouldSynchronize(modernActivityCache)) {
                 modernActivity = $http.get(REST_URL + 'activity?activity_name=Taniec+nowoczesny')
-                        .success(function (data) {
-                            modernActivityCache = new Date();
-                            return data;
-                        })
-                        .error(function (data) {
-                            alert('FUCKING ERROR FOR FUCKS SAKE!!!');
-                            return null;
-                        });
+                    .then(function (data) {
+                        modernActivityCache = new Date();
+                        return data;
+                    },
+                    function (data) {
+                        $log.error('FUCKING ERROR FOR FUCKS SAKE!!!');
+                        return null;
+                    });
             }
             return modernActivity;
         }
     };
+
+    var loadBallroomActivity = {
+        async: function () {
+            if (ballroomActivity == null || dateCacheService.shouldSynchronize(ballroomActivityCache)) {
+                ballroomActivity = $http.get(REST_URL + 'activity?activity_name=Taniec+towarzyski')
+                    .then(function (data) {
+                        ballroomActivityCache = new Date();
+                        return data;
+                    },
+                    function (data) {
+                        $log.error('FUCKING ERROR FOR FUCKS SAKE!!!');
+                        return null;
+                    });
+            }
+            return ballroomActivity;
+        }
+    };
+
+    var loadSpecialOccassionActivity = {
+        async: function () {
+            if (specialOcassionActivity == null || dateCacheService.shouldSynchronize(specialOcassionActivityCache)) {
+                specialOcassionActivity = $http.get(REST_URL + 'activity?activity_name=Specjalne+okazje')
+                    .then(function (data) {
+                        specialOcassionActivityCache = new Date();
+                        return data;
+                    },
+                    function (data) {
+                        $log.error('FUCKING ERROR FOR FUCKS SAKE!!!');
+                        return null;
+                    });
+            }
+            return specialOcassionActivity;
+        }
+    };
+
     //END OF NEW VERSION
     return {
         loadModernDance: loadModernDance,
         loadBallroomDance: loadBallroomDance,
         loadSpecialOccasionDance: loadSpecialOccasionDance,
-        loadActivity: function(activityType) {
-            switch(activityType) {
+        loadActivity: function (activityType) {
+            switch (activityType) {
                 case ActivityType.MODERN:
                     return loadModernActivity;
                 case ActivityType.BALLROOM:
+                    return loadBallroomActivity;
                 case ActivityType.SPECIAL_OCCASION:
+                    return loadSpecialOccassionActivity;
             }
         },
-        loadModernActivity: loadModernActivity,
+        //loadModernActivity: loadModernActivity,
         getTeachers: function () {
             return teachers;
         },
