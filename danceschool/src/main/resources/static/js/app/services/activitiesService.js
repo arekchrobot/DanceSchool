@@ -110,6 +110,22 @@ appServices.service('activitiesService', function ($http, dateCacheService, Acti
 
     var specialOccassionActivity = null;
     var specialOccassionActivityCache = null;
+    
+    //quite slow for now
+    var loadActivity = function(activity, activityCache, activityUrl) {
+        if (activity == null || dateCacheService.shouldSynchronize(activityCache)) {
+                activity = $http.get(REST_URL + activityUrl)
+                    .then(function (data) {
+                        activityCache = new Date();
+                        return data.data;
+                    },
+                    function (data) {
+                        $log.error('FUCKING ERROR FOR FUCKS SAKE!!!');
+                        return null;
+                    });
+            }
+            return activity;
+    };
 
     var loadModernActivity = {
         async: function () {

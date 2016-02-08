@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">O zajęciach
-                <small>{{danceType.name}}</small>
+                <small>{{activity.name}}</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="index.html">Strona główna</a>
@@ -27,24 +27,15 @@
 
         </div>
     </div>
-    <!-- /.row -->
-    
-    <!--<img ng-src="{{testImg}}" border="0"/>-->
-    <!--<br/>-->
-    <!--<img ng-src="data:image/png;base64,{{wtf.image}}" border="0"/>-->
-    <!--<br/>-->
-    <!--<img ng-repeat="myImage in wtf2.gallery" ng-src="data:image/png;base64,{{myImage}}" border="0"/>-->
-    
-    <!--<div ng-bind="activity.name"></div>-->
     
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">Instruktorzy</h2>
         </div>
-        <div ng-repeat="teacher in teachers">
+        <div ng-repeat="teacher in activity.instructors">
             <div class="col-md-4 text-center">
                 <div class="thumbnail">
-                    <img class="img-responsive" src="{{teacher.image}}" alt="">
+                    <img class="img-responsive" ng-src="data:image/png;base64,{{teacher.image}}" alt="">
                     <div class="caption">
                         <h3>{{teacher.name}}<br>
                         </h3>
@@ -124,10 +115,10 @@
         <div class="col-lg-12">
             <h2 class="page-header">Galeria</h2>
         </div>
-        <div ng-repeat="image in gallery">
+        <div ng-repeat="image in activity.gallery">
             <div class="col-md-4 text-center">
                 <div class="thumbnail">
-                    <img class="img-responsive" src="{{image}}" alt="">
+                    <img class="img-responsive" ng-src="data:image/png;base64,{{image}}" alt="">
                 </div>
             </div>
         </div>
