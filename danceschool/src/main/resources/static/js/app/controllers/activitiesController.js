@@ -18,6 +18,16 @@ appControllers.controller('activitiesController', ['$scope', '$rootScope', '$sce
                 $log.info('DAAMN!!1');
             });
     };
+    
+    var loadActivityV2 = function(activityType) {
+        activitiesService.loadActivityV2(activityType)
+                .then(function(data) {
+                    $scope.activity = data;
+                },
+                function (data) {
+                    $log.info('DAAMN!!1');
+                });
+    }
 
     loadActivity($rootScope.activityType);
 

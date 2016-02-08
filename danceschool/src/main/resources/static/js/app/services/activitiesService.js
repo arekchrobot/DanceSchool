@@ -193,6 +193,16 @@ appServices.service('activitiesService', function ($http, dateCacheService, Acti
                     return loadSpecialOccassionActivity;
             }
         },
+        loadActivityV2: function(activityType) {
+            switch (activityType) {
+                case ActivityType.MODERN:
+                    return loadActivity(modernActivity, modernActivityCache, 'activity?activity_name=Taniec+nowoczesny');
+                case ActivityType.BALLROOM:
+                    return loadActivity(ballroomActivity, ballroomActivityCache, 'activity?activity_name=Taniec+towarzyski');
+                case ActivityType.SPECIAL_OCCASION:
+                    return loadActivity(specialOccassionActivity, specialOccassionActivityCache, 'activity?activity_name=Specjalne+okazje');
+            }
+        },
         //loadModernActivity: loadModernActivity,
         getTeachers: function () {
             return teachers;
