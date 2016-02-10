@@ -73,7 +73,7 @@ appControllers.controller('activitiesController', ['$scope', '$rootScope', '$sce
     });
 
     $rootScope.$on('activityChange', function () {
-        loadActivity($rootScope.activityType);
+        loadActivityV2($rootScope.activityType);
     });
 
 }]);
