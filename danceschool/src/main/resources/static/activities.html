@@ -69,7 +69,7 @@
                 <td>{{lesson.weekDay}}</td>
                 <td>{{lesson.hour}}</td>
                 <td>{{lesson.instructorName}}</td>
-                <td><button id="b{{$index+1}}" type="submit" class="btn btn-primary"  ng-click="alert('b{{$index+1}}')"
+                <td><button id="b{{$index+1}}" type="submit" class="btn btn-primary"  ng-click="alert('b' + ($index+1))"
                         >Zapisz się</button></td>
             </tr>
 <!--            <tr>
