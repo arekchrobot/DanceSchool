@@ -65,7 +65,14 @@
                 <td>Prowadzący</td>
                 <td> </td>
             </tr>
-            <tr>
+            <tr ng-repeat="lesson in lessons">
+                <td>{{lesson.weekDay}}</td>
+                <td>{{lesson.hour}}</td>
+                <td>{{lesson.instructorName}}</td>
+                <td><button id="b{{$index+1}}" type="submit" class="btn btn-primary"  ng-click="alert('b{{$index+1}}')"
+                        >Zapisz się</button></td>
+            </tr>
+<!--            <tr>
                 <td>Poniedziałek</td>
                 <td>17:00</td>
                 <td>{{teachers[1].name}}</td>
@@ -107,7 +114,7 @@
                 <td>{{teachers[2].name}}</td>
                <td><button id="b6" type="submit" class="btn btn-primary"  ng-click="alert('b6')"
                         >Zapisz się</button></td>
-            </tr>
+            </tr>-->
         </table>
     </div>
     <!-- Team Members -->

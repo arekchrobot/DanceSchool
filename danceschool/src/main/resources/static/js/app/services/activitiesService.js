@@ -104,12 +104,18 @@ appServices.service('activitiesService', function ($http, dateCacheService, Acti
     //NEW VERSION
     var modernActivity = null;
     var modernActivityCache = null;
+    var modernLessons = null;
+    var modernLessonsCache = null;
 
     var ballroomActivity = null;
     var ballroomActivityCache = null;
+    var ballroomLessons = null;
+    var ballroomLessonsCache = null;
 
     var specialOccassionActivity = null;
     var specialOccassionActivityCache = null;
+    var specialOccassionLessons = null;
+    var specialOccassionLessonsCache = null;
     
     //quite slow for now
     var loadActivity = function(activity, activityCache, activityUrl) {
@@ -126,6 +132,20 @@ appServices.service('activitiesService', function ($http, dateCacheService, Acti
             }
             return activity;
     };
+    
+    var loadLessons = function(lessons, lessonCache, lessonsUrl) {
+        if(lessons == null || dateCacheService.shouldSynchronize(lessonCache)) {
+            lessons = $http.get(REST_URL + lessonsUrl)
+                    .then(function(data) {
+                        lessonCache = new Date();
+                        return data.data;
+                    },
+                    function(data) {
+                        $log.error("ERRROOORRR");
+                    });
+        }
+        return lessons;
+    }
 
     var loadModernActivity = {
         async: function () {
@@ -201,6 +221,16 @@ appServices.service('activitiesService', function ($http, dateCacheService, Acti
                     return loadActivity(ballroomActivity, ballroomActivityCache, 'activity?activity_name=Taniec+towarzyski');
                 case ActivityType.SPECIAL_OCCASION:
                     return loadActivity(specialOccassionActivity, specialOccassionActivityCache, 'activity?activity_name=Specjalne+okazje');
+            }
+        },
+        loadLessons: function(activityType) {
+            switch (activityType) {
+                case ActivityType.MODERN:
+                    return loadLessons(modernLessons, modernLessonsCache, 'lessons?activity_name=Taniec+nowoczesny');
+                case ActivityType.BALLROOM:
+                    return loadLessons(ballroomLessons, ballroomLessonsCache, 'lessons?activity_name=Taniec+towarzyski');
+                case ActivityType.SPECIAL_OCCASION:
+                    return loadLessons(specialOccassionLessons, specialOccassionLessonsCache, 'lessons?activity_name=Specjalne+okazje');
             }
         },
         //loadModernActivity: loadModernActivity,

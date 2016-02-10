@@ -7,6 +7,7 @@ appControllers.controller('activitiesController', ['$scope', '$rootScope', '$sce
     };
 
     $scope.activity = {};
+    $scope.lessons = {};
 
     var loadActivity = function (activityType) {
         activitiesService.loadActivity(activityType)
@@ -19,6 +20,16 @@ appControllers.controller('activitiesController', ['$scope', '$rootScope', '$sce
             });
     };
     
+    var loadLessons = function (activityType) {
+        activitiesService.loadLessons(activityType)
+                .then(function(data) {
+                    $scope.lessons = data;
+                },
+                function(data) {
+                    $log.info("DAMN!");
+                });
+    };
+    
     var loadActivityV2 = function(activityType) {
         activitiesService.loadActivityV2(activityType)
                 .then(function(data) {
@@ -27,7 +38,7 @@ appControllers.controller('activitiesController', ['$scope', '$rootScope', '$sce
                 function (data) {
                     $log.info('DAAMN!!1');
                 });
-    }
+    };
 
     loadActivity($rootScope.activityType);
 
@@ -71,9 +82,13 @@ appControllers.controller('activitiesController', ['$scope', '$rootScope', '$sce
             $('#b' + id).show();
         }
     });
+    
+    loadActivityV2($rootScope.activityType);
+    loadLessons($rootScope.activityType);
 
     $rootScope.$on('activityChange', function () {
         loadActivityV2($rootScope.activityType);
+        loadLessons($rootScope.activityType);
     });
 
 }]);
