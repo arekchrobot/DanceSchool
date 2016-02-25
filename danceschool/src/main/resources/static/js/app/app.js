@@ -2,23 +2,23 @@ angular.module('hello', ['ngRoute', 'appControllers', 'smoothScroll'])
     .config(['$routeProvider', '$sceDelegateProvider', function ($routeProvider, $sceDelegateProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'main.html',
+                templateUrl: 'html/main/main.html',
                 controller: 'mainController'
             })
             .when('/activities', {
-                templateUrl: 'activities.html',
+                templateUrl: 'html/activity/activities.html',
                 controller: 'activitiesController'
             })
             .when('/contact', {
-                templateUrl: 'contact.html',
+                templateUrl: 'html/contact/contact.html',
                 controller: 'contactController'
             })
             .when('/about', {
-                templateUrl: 'about.html',
+                templateUrl: 'html/about/about.html',
                 controller: 'aboutController'
             })
             .when('/priceList', {
-                templateUrl: 'priceList.html',
+                templateUrl: 'html/priceList/priceList.html',
                 controller: 'priceListController'
             })
             .otherwise('/');

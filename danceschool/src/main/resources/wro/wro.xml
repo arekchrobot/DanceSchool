@@ -14,17 +14,18 @@
         <js>webjar:angular-simple-logger/0.1.4/dist/angular-simple-logger.min.js</js>
         <js>webjar:ngSmoothScroll/1.7.1/angular-smooth-scroll.min.js</js>
         <js>webjar:bootstrap/3.1.1/js/bootstrap.min.js</js>
+        <js>webjar:angular-local-storage/0.2.1/angular-local-storage.min.js</js>
     </group>
     <group name="angular-app">
         <js>file:${project.basedir}/src/main/resources/static/js/app/config.js</js>
-        <js>file:${project.basedir}/src/main/resources/static/js/app/services/dateCacheService.js</js>
-        <js>file:${project.basedir}/src/main/resources/static/js/app/services/activitiesService.js</js>
-        <js>file:${project.basedir}/src/main/resources/static/js/app/controllers/mainController.js</js>
-        <js>file:${project.basedir}/src/main/resources/static/js/app/controllers/navigationController.js</js>
-        <js>file:${project.basedir}/src/main/resources/static/js/app/controllers/activitiesController.js</js>
-        <js>file:${project.basedir}/src/main/resources/static/js/app/controllers/contactController.js</js>
-        <js>file:${project.basedir}/src/main/resources/static/js/app/controllers/aboutController.js</js>
-        <js>file:${project.basedir}/src/main/resources/static/js/app/controllers/priceListController.js</js>
+        <js>file:${project.basedir}/src/main/resources/static/js/app/util/dateCacheService.js</js>
+        <js>file:${project.basedir}/src/main/resources/static/js/app/activity/activitiesService.js</js>
+        <js>file:${project.basedir}/src/main/resources/static/js/app/activity/activitiesController.js</js>
+        <js>file:${project.basedir}/src/main/resources/static/js/app/main/mainController.js</js>
+        <js>file:${project.basedir}/src/main/resources/static/js/app/navigation/navigationController.js</js>
+        <js>file:${project.basedir}/src/main/resources/static/js/app/contact/contactController.js</js>
+        <js>file:${project.basedir}/src/main/resources/static/js/app/about/aboutController.js</js>
+        <js>file:${project.basedir}/src/main/resources/static/js/app/priceList/priceListController.js</js>
         <js>file:${project.basedir}/src/main/resources/static/js/app/app.js</js>
     </group>
 </groups>
