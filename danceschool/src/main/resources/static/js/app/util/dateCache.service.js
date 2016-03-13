@@ -1,7 +1,6 @@
 appServices.service('dateCacheService', function() {
     
-    var cacheTimeMin = 5;
-    var shouldSynchronize = function(lastSynchronizationDate) {
+    var shouldSynchronize = function(lastSynchronizationDate, cacheTimeMin) {
         if(lastSynchronizationDate != null) {
             var currentDate = new Date();
 

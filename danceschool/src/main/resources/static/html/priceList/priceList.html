@@ -22,68 +22,13 @@
                 <td>Dzień tygodnia</td>
                 <td>Godzina</td>
                 <td>Prowadzący</td>
-                <td>Cena</td>
+                <td>Cena [zł]</td>
             </tr>
-            <tr>
-                <td>Poniedziałek</td>
-                <td>17:00</td>
-                <td>Katarzyna Kowalska</td>
-                <td>25zł/godzina</td>
-            </tr>
-            <tr>
-                <td>Poniedziałek</td>
-                <td>17:00</td>
-                <td>Pablo Martinez</td>
-                <td>25zł/godzina</td>
-            </tr>
-            <tr>
-                <td>Poniedziałek</td>
-                <td>17:00</td>
-                <td>Amanda Piasecka</td>
-                <td>25zł/godzina</td>
-            </tr>
-            <tr>
-                <td>Wtorek</td>
-                <td>18:00</td>
-                <td>Amanda Piasecka</td>
-                <td>25zł/godzina</td>
-            </tr>
-            <tr>
-                <td>Wtorek</td>
-                <td>18:00</td>
-                <td>Dominika Macierewicz</td>
-                <td>25zł/godzina</td>
-            </tr>
-            <tr>
-                <td>Wtorek</td>
-                <td>18:00</td>
-                <td>Martin Egurrola</td>
-                <td>25zł/godzina</td>
-            </tr>
-            <tr>
-                <td>Środa</td>
-                <td>17:00</td>
-                <td>Tatiana Okupnik</td>
-                <td>25zł/godzina</td>
-            </tr>
-            <tr>
-                <td>Środa</td>
-                <td>16:00</td>
-                <td>Dominika Macierewicz</td>
-                <td>25zł/godzina</td>
-            </tr>
-            <tr>
-                <td>Czwartek</td>
-                <td>18:00</td>
-                <td>Tatiana Okupnik</td>
-                <td>25zł/godzina</td>
-            </tr>
-            <tr>
-                <td>Piątek</td>
-                <td>16:00</td>
-                <td>Martin Egurrola</td>
-                <td>25zł/godzina</td>
-            </tr>
+            <tr ng-repeat="lesson in lessons">
+                <td>{{lesson.weekDay}}</td>
+                <td>{{lesson.hour}}</td>
+                <td>{{lesson.instructorName}}</td>
+                <td>{{lesson.pricePerHour}}</td>
         </table>
     </div>
 </div>

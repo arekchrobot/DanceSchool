@@ -33,15 +33,16 @@
         <div class="col-md-4">
             <h3>Dane kontaktowe</h3>
             <p>
-                Wólczańska 256<br>95-111 Łódź<br>
+                <!--Wólczańska 256<br>95-111 Łódź<br>-->
+                {{contact.address}}<br>{{contact.zipCode}} {{contact.city}}<br>
             </p>
             <p><i class="fa fa-phone"></i> 
-                <abbr title="Telefon">Telefon</abbr>: +48 42 234 34 45</p>
+                <abbr title="Telefon">Telefon</abbr>: {{contact.phone}}</p>
             <p><i class="fa fa-envelope-o"></i> 
-                <abbr title="Email">Email</abbr>: <a href="mailto:szkolatanca@taniec.com">szkolatanca@taniec.com</a>
+                <abbr title="Email">Email</abbr>: <a href="mailto:{{contact.email}}">{{contact.email}}</a>
             </p>
             <p><i class="fa fa-clock-o"></i> 
-                <abbr title="Godziny otwarcia">Godziny otwarcia</abbr>: Poniedziałek - Piątek: 9:00 - 21:00</p>
+                <abbr title="Godziny otwarcia">Godziny otwarcia</abbr>: <div ng-repeat="openingHour in contact.openingHours">{{openingHour}}</div></p>
             <ul class="list-unstyled list-inline list-social-icons">
                 <li>
                     <a href="#"><i class="fa fa-facebook-square fa-2x"></i></a>

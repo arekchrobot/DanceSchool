@@ -10,10 +10,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+
 import org.hibernate.validator.constraints.Email;
 
 /**
- *
  * @author chrobota
  */
 @Entity
@@ -24,24 +24,30 @@ public class Contact extends BaseEntity {
     @Column(name = "address", length = 100)
     @Size(max = 100)
     private String address;
-    
+
     @Column(name = "zip_code", length = 10)
     @Size(max = 10)
     private String zipCode;
-    
+
     @Column(name = "city", length = 50)
     @Size(max = 50)
     private String city;
-    
+
     @Column(name = "phone", length = 30)
     @Size(max = 30)
     private String phone;
-    
+
     @Column(name = "email", length = 100)
     @Email
     @Size(max = 100)
     private String email;
-    
+
+    @Column(name = "latitude")
+    private double latitude;
+
+    @Column(name = "longitude")
+    private double longitude;
+
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "opening_hours",
             joinColumns = @JoinColumn(name = "contact_id"))
@@ -94,5 +100,21 @@ public class Contact extends BaseEntity {
 
     public void setOpeningHours(List<String> openingHours) {
         this.openingHours = openingHours;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 }

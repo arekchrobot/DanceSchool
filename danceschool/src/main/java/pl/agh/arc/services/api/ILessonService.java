@@ -10,4 +10,6 @@ import pl.agh.arc.domain.wrappers.LessonWrapper;
 public interface ILessonService {
 
     List<LessonWrapper> getLessonsForActivity(String activityName);
+
+    List<LessonWrapper> getAllLessons();
 }

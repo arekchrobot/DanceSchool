@@ -10,9 +10,6 @@ appControllers.controller('activitiesController', ['$scope', '$rootScope', '$sce
         $scope.activity = {};
         $scope.lessons = {};
 
-        $scope.myLovelyAss = {};
-        $scope.myLovelyAss.ass = 'dfdsdsds1111';
-
         var loadLessons = function (activityType) {
             activityService.loadCacheLessons(activityType)
                 .then(function (data) {

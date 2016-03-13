@@ -9,6 +9,7 @@ import pl.agh.arc.domain.Instructor;
 import pl.agh.arc.domain.wrappers.ActivityWrapper;
 import pl.agh.arc.domain.wrappers.InstructorWrapper;
 import pl.agh.arc.services.api.IActivityService;
+import pl.agh.arc.util.IterableToListConverter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,9 +27,20 @@ public class ActivityService implements IActivityService {
     @Autowired
     private ImageResolver imageResolver;
 
+    @Override
     public ActivityWrapper loadActivity(String activityName) {
         Activity loadedActivity = activityDao.findByName(activityName);
         return convertToWrapper(loadedActivity);
+    }
+
+    @Override
+    public List<InstructorWrapper> loadAllInstructors() {
+        List<Activity> allActivities = IterableToListConverter.convertToList(activityDao.findAll());
+        List<InstructorWrapper> result = new ArrayList<>();
+        for (Activity activity : allActivities) {
+            result.addAll(convertInstructors(activity.getInstructors()));
+        }
+        return result;
     }
 
     private ActivityWrapper convertToWrapper(Activity activity) {

@@ -72,7 +72,7 @@
 
         <a id="toTop" class="btn btn-default" scroll-to="topDiv"><i class="fa fa-fw fa-chevron-up"></i> Powrót</a>
 
-        <div class="container">
+        <div class="container" ng-controller="contactController">
             <!-- Footer -->
             <footer>
                 <div class="row">
@@ -85,15 +85,16 @@
                     <div class="col-md-4">
                         <h4 style="font-size: 0.8em;">Kontakt</h4>
                         <p style="font-size: 0.7em;">
-                            Wólczańska 256<br>95-111 Łódź<br>
+                            {{contact.address}}<br>{{contact.zipCode}} {{contact.city}}<br>
                         </p>
                         <p style="font-size: 0.7em;"><i class="fa fa-phone"></i>
-                            <abbr title="Telefon">Telefon</abbr>: +48 42 234 34 45</p>
+                            <abbr title="Telefon">Telefon</abbr>: {{contact.phone}}</p>
                         <p style="font-size: 0.7em;"><i class="fa fa-envelope-o"></i>
-                            <abbr title="Email">Email</abbr>: <a href="mailto:szkolatanca@taniec.com">szkolatanca@taniec.com</a>
+                            <abbr title="Email">Email</abbr>: <a href="mailto:{{contact.email}}">{{contact.email}}</a>
                         </p>
-                        <p style="font-size: 0.7em;"><i class="fa fa-clock-o"></i>
-                            <abbr title="Godziny otwarcia">Godziny otwarcia</abbr>: Poniedziałek - Piątek: 9:00 - 21:00</p>
+                        <p style="font-size: 0.7em;" ng-repeat-start="openingHour in contact.openingHours" ng-repeat-end><i class="fa fa-clock-o"></i>
+                            <abbr title="Godziny otwarcia">Godziny otwarcia</abbr>: {{openingHour}}</p>
+                        <!--<div ng-repeat-end=""></div>-->
                     </div>
                 </div>
             </footer>

@@ -25,4 +25,9 @@ public class LessonController {
         
         return lessonService.getLessonsForActivity(activityName);
     }
+
+    @RequestMapping(method = RequestMethod.GET, value="/lessons/all", produces = "application/json;charset=UTF-8")
+    public List<LessonWrapper> getAllLessons() {
+        return lessonService.getAllLessons();
+    }
 }

@@ -51,6 +51,9 @@ INSERT INTO lesson(id, week_day, hour_, instructor_id, price_per_hour, version) 
 INSERT INTO news(id, title, description, image, version) VALUES (0, 'Nowe zajęcia z tańca nowoczesnego', 'Od stycznia 2016 roku oferta tańca nowoczesnego zostanie powiększona. Będzie więcej zajęć dla zaawansowanych oraz możliwość wzięcia udziału w warsztatch ze światowej sławy tancerzami - nawet z samego Brooklynu!', 'aktualnosci1.jpg', 1);
 INSERT INTO news(id, title, description, image, version) VALUES (1, 'Zwycięstwo w międzynarodowych zawodach juniorów w tańcu towarzyskim', 'Dnia 25.10.2015 para z naszej szkoły wygrała międzynarodowe zawody tańca towarzyskiego w kategorii junirów. Pokonali oni wiele znakomitych par. Przygotowania prowadził {IMIE}, natomiast choregorafią zajęła się {IMIE}. Serdecznie gratulujemy naszej parze! Oby tak dalej.', 'aktualnosci2.jpg', 1);
 
-INSERT INTO contact(id, address, zip_code, city, phone, email, version) VALUES (0, 'Wólczańska 256', '95-111', 'Łódź', '+48 42 234 34 45', 'szkolatanca@taniec.com',1);
+INSERT INTO contact(id, address, zip_code, city, phone, email, latitude, longitude, version) VALUES (0, 'Wólczańska 256', '95-111', 'Łódź', '+48 42 234 34 45', 'szkolatanca@taniec.com',51.73885, 19.46019, 1);
 
 INSERT INTO opening_hours(contact_id, opening_hour) VALUES ((SELECT id FROM contact WHERE email = 'szkolatanca@taniec.com'), 'Poniedziałek - Piątek: 9:00 - 21:00');
+
+INSERT INTO about(id, description, version) VALUES (0, 'Jesteśmy szkołą z wieloletnią tradycją oraz świetnymi instruktorami. Nasi instruktorzy są międzynarodowymi mistrzami w tańcu oraz wieloletnimi instruktorami.', 1);
+INSERT INTO about(id, description, version) VALUES (1, 'Dzięki różnorodności ofert nasza szkoła wyróżnia się na tle innych - światowi specjaliści oraz wysokiej jakości miejsca treningowe sprawią, że kazda chwila spędzona z nami będzie radosna.', 1);

@@ -6,7 +6,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pl.agh.arc.domain.wrappers.ActivityWrapper;
+import pl.agh.arc.domain.wrappers.InstructorWrapper;
 import pl.agh.arc.services.api.IActivityService;
+
+import java.util.List;
 
 /**
  * Created by Arek on 2016-01-24.
@@ -22,5 +25,10 @@ public class ActivityController {
         activityName = activityName.replaceAll("\\+", " ");
 
         return activityService.loadActivity(activityName);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/instructors", produces = "application/json;charset=UTF-8")
+    public List<InstructorWrapper> getAllInstructors() {
+        return activityService.loadAllInstructors();
     }
 }
