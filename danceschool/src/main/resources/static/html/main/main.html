@@ -2,6 +2,7 @@
     <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
         <uib-slide ng-repeat="slide in slides" active="slide.active">
             <img ng-src="{{slide.image}}" style="margin:auto;">
+
             <div class="carousel-caption">
                 <h4>{{slide.text}}</h4>
             </div>
@@ -21,7 +22,9 @@
                     <h4><i class="fa fa-fw fa-bookmark-o"></i> Taniec towarzyski</h4>
                 </div>
                 <div class="panel-body">
-                    <p>Forma rozrywki wywodząca się z tańców salonowych i zabaw ludowych, uprawiana od początku XX wieku, na początku był to taniec dla klas uprzywilejowanych, natomiast tańce ludowe pozostawiano klasom niższym.</p>
+                    <p>Forma rozrywki wywodząca się z tańców salonowych i zabaw ludowych, uprawiana od początku XX
+                        wieku, na początku był to taniec dla klas uprzywilejowanych, natomiast tańce ludowe pozostawiano
+                        klasom niższym.</p>
                     <a href="#/activities" ng-click="loadBallroomDance()" class="btn btn-default">Dowiedz się więcej</a>
                 </div>
             </div>
@@ -32,7 +35,8 @@
                     <h4><i class="fa fa-fw fa-bookmark-o"></i> Taniec nowoczesny</h4>
                 </div>
                 <div class="panel-body">
-                    <p>Jest to zbiorcze określenie wielu gatunków i rodzajów tańca powstałych w XX i XXI wieku. Nazwa ta może być stosowana do różnych, nie powiązanych ze sobą gatunków tanecznych.</p>
+                    <p>Jest to zbiorcze określenie wielu gatunków i rodzajów tańca powstałych w XX i XXI wieku. Nazwa ta
+                        może być stosowana do różnych, nie powiązanych ze sobą gatunków tanecznych.</p>
                     <a href="#/activities" ng-click="loadModernDance()" class="btn btn-default">Dowiedz się więcej</a>
                 </div>
             </div>
@@ -43,8 +47,10 @@
                     <h4><i class="fa fa-fw fa-bookmark-o"></i> Specjalne okazje</h4>
                 </div>
                 <div class="panel-body">
-                    <p>Jest to określenie na wszelkiego rodzaju wyjątkowe sytuacje jak pierwszy taniec weselny, tańce na rozpoczęcie studniówek.</p>
-                    <a href="#/activities" ng-click="loadSpecialOccasionDance()" class="btn btn-default">Dowiedz się więcej</a>
+                    <p>Jest to określenie na wszelkiego rodzaju wyjątkowe sytuacje jak pierwszy taniec weselny, tańce na
+                        rozpoczęcie studniówek.</p>
+                    <a href="#/activities" ng-click="loadSpecialOccasionDance()" class="btn btn-default">Dowiedz się
+                        więcej</a>
                 </div>
             </div>
         </div>
@@ -54,41 +60,24 @@
         <div class="col-lg-12">
             <h2 class="page-header">Aktualności</h2>
         </div>
-        <div class="col-md-6">
-            <p><strong>Nowe zajęcia z tańca nowoczesnego</strong></p>
-            <p>Od stycznia 2016 roku oferta tańca nowoczesnego zostanie powiększona. Będzie więcej zajęć dla zaawansowanych oraz możliwość wzięcia udziału w warsztatch ze światowej sławy tancerzami - nawet z samego Brooklynu!</p>
-        </div>
-        <div class="col-md-6">
-            <img class="img-responsive" src="../../images/aktualnosci1.jpg" alt="">
-        </div>
-    </div>
-    
-    <hr>
-    
-    <div class="row">
-        <div class="col-md-6">
-            <p><strong>Zwycięstwo w międzynarodowych zawodach juniorów w tańcu towarzyskim</strong></p>
-            <p>Dnia 25.10.2015 para z naszej szkoły wygrała międzynarodowe zawody tańca towarzyskiego w kategorii junirów. Pokonali oni wiele znakomitych par. Przygotowania prowadził {IMIE}, natomiast choregorafią zajęła się {IMIE}. Serdecznie gratulujemy naszej parze! Oby tak dalej.</p>
-        </div>
-        <div class="col-md-6">
-            <img class="img-responsive" src="../../images/aktualnosci2.jpg" alt="">
-        </div>
     </div>
 
-    <hr>
-
-    <!-- Call to Action Section -->
-<!--    <div class="well">
+    <div ng-repeat="news in filteredNews">
         <div class="row">
-            <div class="col-md-8">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+            <div class="col-md-6">
+                <p><strong>{{news.title}}</strong></p>
+
+                <p>{{news.description}}</p>
             </div>
-            <div class="col-md-4">
-                <a class="btn btn-lg btn-default btn-block" href="#">Call to Action</a>
+            <div class="col-md-6">
+                <img class="img-responsive" ng-src="data:image/png;base64,{{news.image}}" alt="">
             </div>
         </div>
-    </div>-->
 
-    <!--<hr>-->
+        <hr>
+    </div>
+    <pagination total-items="totalItems" items-per-page="itemsPerPage"
+                ng-model="currentPage" ng-change="pageChanged()"
+                next-text="Następne" previous-text="Poprzednie"></pagination>
 
 </div>
