@@ -12,8 +12,8 @@
             [ng\:cloak], [ng-cloak], .ng-cloak {
                 display: none !important;
             }
-            .angular-google-map-container { 
-                height: 400px; 
+            .angular-google-map-container {
+                height: 400px;
             }
             #toTop {
                 display: block;
@@ -25,10 +25,19 @@
                 border-radius: 4px;
                 background: white;
             }
+
+            .cl-accept {
+                background: #428bca none repeat scroll 0 0 !important;
+            }
+            .cl-accept:hover {
+                background: #3276b1 none repeat scroll 0 0 !important;
+            }
         </style>
     </head>
     <body ng-app="hello" ng-cloak class="ng-cloak">
         <div id="topDiv" style="position: fixed; top: 0%"></div>
+        <cookie-law-banner message="Ta strona używa plików cookie oraz localStorage do świadczenia usług na najwyższym poziomie."
+                           policy-url="http://google.com" accept-text="Zamknij"></cookie-law-banner>
         <nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="navigationController" role="navigation">
             <div class="container">
                 <div class="navbar-header">

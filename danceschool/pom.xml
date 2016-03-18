@@ -170,6 +170,11 @@
                         <artifactId>angular-local-storage</artifactId>
                         <version>0.2.1</version>
                     </dependency>
+                    <dependency>
+                        <groupId>org.webjars.bower</groupId>
+                        <artifactId>angular-cookie-law</artifactId>
+                        <version>0.2.3</version>
+                    </dependency>
                 </dependencies>
             </plugin>
         </plugins>
