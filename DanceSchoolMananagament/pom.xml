@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>pl.agh.arc</groupId>
-    <artifactId>DanceSchool</artifactId>
+    <artifactId>DanceSchoolManagament</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>DanceSchool</name>
-    <description>Dance School Single Page Application</description>
+    <name>DanceSchoolManagament</name>
+    <description>Management Console for DanceSchool</description>
 
     <parent>
         <groupId>pl.agh.arc</groupId>
@@ -18,28 +18,25 @@
     </parent>
 
     <properties>
-<!--        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
         <postgres.version>9.4-1201-jdbc41</postgres.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
-        </dependency>
-		
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -54,11 +51,11 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>DanceSchoolDao</artifactId>
+            <artifactId>DanceSchoolDomain</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>
-	
+
     <build>
         <resources>
             <resource>
@@ -145,11 +142,11 @@
                         <artifactId>angular-animate</artifactId>
                         <version>1.4.7</version>
                     </dependency>
-                    <dependency>
-                        <groupId>org.webjars</groupId>
-                        <artifactId>angular-google-maps</artifactId>
-                        <version>2.1.1</version>
-                    </dependency>
+                    <!--<dependency>-->
+                        <!--<groupId>org.webjars</groupId>-->
+                        <!--<artifactId>angular-google-maps</artifactId>-->
+                        <!--<version>2.1.1</version>-->
+                    <!--</dependency>-->
                     <dependency>
                         <groupId>org.webjars.bower</groupId>
                         <artifactId>lodash</artifactId>
@@ -175,10 +172,15 @@
                         <artifactId>angular-cookie-law</artifactId>
                         <version>0.2.3</version>
                     </dependency>
+                    <dependency>
+                        <groupId>org.webjars</groupId>
+                        <artifactId>angular-ui-router</artifactId>
+                        <version>0.2.18</version>
+                    </dependency>
                 </dependencies>
             </plugin>
         </plugins>
     </build>
-	
+
 
 </project>
