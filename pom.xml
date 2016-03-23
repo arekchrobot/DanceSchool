@@ -16,7 +16,8 @@
         <module>danceschool</module>
         <module>DanceSchoolDomain</module>
         <module>DanceSchoolDao</module>
-        <module>DanceSchoolMananagament</module>
+        <module>DanceSchoolManagement</module>
+        <module>DanceSchoolUserDomain</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

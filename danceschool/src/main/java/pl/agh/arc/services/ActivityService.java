@@ -3,7 +3,7 @@ package pl.agh.arc.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.agh.arc.dao.IActivityDao;
+import pl.agh.arc.dao.ActivityDao;
 import pl.agh.arc.domain.Activity;
 import pl.agh.arc.domain.Instructor;
 import pl.agh.arc.domain.wrappers.ActivityWrapper;
@@ -22,7 +22,7 @@ import java.util.List;
 public class ActivityService implements IActivityService {
 
     @Autowired
-    private IActivityDao activityDao;
+    private ActivityDao activityDao;
 
     @Autowired
     private ImageResolver imageResolver;

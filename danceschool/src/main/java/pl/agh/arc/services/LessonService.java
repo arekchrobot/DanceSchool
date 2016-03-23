@@ -1,7 +1,6 @@
 package pl.agh.arc.services;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,8 +8,8 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.agh.arc.dao.IActivityDao;
-import pl.agh.arc.dao.ILessonDao;
+import pl.agh.arc.dao.ActivityDao;
+import pl.agh.arc.dao.LessonDao;
 import pl.agh.arc.domain.Activity;
 import pl.agh.arc.domain.Lesson;
 import pl.agh.arc.domain.wrappers.LessonWrapper;
@@ -25,9 +24,9 @@ import pl.agh.arc.util.IterableToListConverter;
 public class LessonService implements ILessonService {
 
     @Autowired
-    private ILessonDao lessonDao;
+    private LessonDao lessonDao;
     @Autowired
-    private IActivityDao activityDao;
+    private ActivityDao activityDao;
 
     private static final Comparator<Lesson> weekDayOrdering = (lesson1, lesson2)
             -> lesson1.getWeekDay().getWeight() - lesson2.getWeekDay().getWeight();

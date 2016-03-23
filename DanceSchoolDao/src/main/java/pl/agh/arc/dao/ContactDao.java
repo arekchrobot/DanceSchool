@@ -7,6 +7,6 @@ import pl.agh.arc.domain.Contact;
  *
  * @author chrobota
  */
-public interface IContactDao extends CrudRepository<Contact, Long> {
+public interface ContactDao extends CrudRepository<Contact, Long> {
     
 }

@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by Arek on 2016-01-24.
  */
-public interface IInstructorDao extends CrudRepository<Instructor, Long> {
+public interface InstructorDao extends CrudRepository<Instructor, Long> {
 
     List<Instructor> findByActivity(Activity activity);
 }

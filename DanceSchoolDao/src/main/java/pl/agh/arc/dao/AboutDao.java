@@ -6,5 +6,5 @@ import pl.agh.arc.domain.About;
 /**
  * Created by Arek on 2016-03-13.
  */
-public interface IAboutDao extends CrudRepository<About, Long> {
+public interface AboutDao extends CrudRepository<About, Long> {
 }

@@ -13,7 +13,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableJpaRepositories
-public class DanceSchoolManagamentApplication {
+public class DanceSchoolManagementApplication {
 
 	@Bean
 	public EmbeddedServletContainerFactory servletContainer() {
@@ -44,6 +44,6 @@ public class DanceSchoolManagamentApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(DanceSchoolManagamentApplication.class, args);
+		SpringApplication.run(DanceSchoolManagementApplication.class, args);
 	}
 }

@@ -3,7 +3,7 @@ package pl.agh.arc.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.agh.arc.dao.IAboutDao;
+import pl.agh.arc.dao.AboutDao;
 import pl.agh.arc.domain.About;
 import pl.agh.arc.services.api.IAboutService;
 import pl.agh.arc.util.IterableToListConverter;
@@ -18,7 +18,7 @@ import java.util.List;
 public class AboutService implements IAboutService {
 
     @Autowired
-    private IAboutDao aboutDao;
+    private AboutDao aboutDao;
 
     @Override
     public List<About> findAll() {

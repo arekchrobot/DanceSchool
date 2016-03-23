@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>pl.agh.arc</groupId>
-    <artifactId>DanceSchoolManagament</artifactId>
+    <artifactId>DanceSchoolManagement</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>DanceSchoolManagament</name>
+    <name>DanceSchoolManagement</name>
     <description>Management Console for DanceSchool</description>
 
     <parent>
@@ -51,7 +51,12 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>DanceSchoolDomain</artifactId>
+            <artifactId>DanceSchoolDao</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>DanceSchoolUserDomain</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>

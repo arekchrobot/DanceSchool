@@ -6,7 +6,7 @@ import pl.agh.arc.domain.Activity;
 /**
  * Created by Arek on 2016-01-24.
  */
-public interface IActivityDao extends CrudRepository<Activity, Long> {
+public interface ActivityDao extends CrudRepository<Activity, Long> {
 
     Activity findByName(String name);
 }

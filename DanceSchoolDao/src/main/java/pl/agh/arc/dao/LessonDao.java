@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author chrobota
  */
-public interface ILessonDao extends CrudRepository<Lesson, Long>{
+public interface LessonDao extends CrudRepository<Lesson, Long>{
 
     List<Lesson> findByInstructorIn(Collection<Instructor> instructors);
 }

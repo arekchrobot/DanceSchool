@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.agh.arc.dao.INewsDao;
+import pl.agh.arc.dao.NewsDao;
 import pl.agh.arc.domain.News;
 import pl.agh.arc.domain.wrappers.NewsWrapper;
 import pl.agh.arc.services.api.INewsService;
@@ -19,7 +19,7 @@ import pl.agh.arc.services.api.INewsService;
 public class NewsService implements INewsService {
 
     @Autowired
-    private INewsDao newsDao;
+    private NewsDao newsDao;
     
     @Autowired
     private ImageResolver imageResolver;
