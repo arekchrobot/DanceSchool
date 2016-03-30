@@ -15,6 +15,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import pl.agh.arc.ManagementSecurityProperties;
+
 
 /**
  * Created by Arek on 2016-03-20.
@@ -24,18 +27,41 @@ import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private pl.agh.arc.SecurityProperties securityProperties;
+    private ManagementSecurityProperties managementSecurityProperties;
     @Autowired
     private UserDetailsService userDetailsService;
+    @Autowired
+    private LogoutSuccess logoutSuccess;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .httpBasic().and().authorizeRequests()
-                .antMatchers("/index.html", "/").permitAll().anyRequest()
-                .authenticated().and()
+                .httpBasic()
+                .and()
+                .authorizeRequests()
+                .antMatchers("/index.html", "/")
+                .permitAll()
+                .anyRequest()
+//                .authenticated()
+                .fullyAuthenticated()
+
+//                .and()
+//                .logout()
+//                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+//                .logoutSuccessUrl("/")
+//                .logoutSuccessHandler(logoutSuccess)
+//                .deleteCookies("JSESSIONID")
+//                .invalidateHttpSession(true)
+//                .permitAll()
+
+                .and()
                 .addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class)
-                .csrf().csrfTokenRepository(csrfTokenRepository());
+                .csrf().csrfTokenRepository(csrfTokenRepository())
+
+                .and()
+                .sessionManagement()
+                .maximumSessions(1)
+                .maxSessionsPreventsLogin(true);
     }
 
     private CsrfTokenRepository csrfTokenRepository() {
@@ -58,6 +84,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder createBCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder(securityProperties.getBcryptStrength());
+        return new BCryptPasswordEncoder(managementSecurityProperties.getBcryptStrength());
     }
+
+
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  */
 @ConfigurationProperties("app.security")
 @Component
-public class SecurityProperties {
+public class ManagementSecurityProperties {
 
     private int bcryptStrength;
 

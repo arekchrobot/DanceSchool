@@ -59,6 +59,7 @@ INSERT INTO about(id, description, version) VALUES (0, 'Jesteśmy szkołą z wie
 INSERT INTO about(id, description, version) VALUES (1, 'Dzięki różnorodności ofert nasza szkoła wyróżnia się na tle innych - światowi specjaliści oraz wysokiej jakości miejsca treningowe sprawią, że kazda chwila spędzona z nami będzie radosna.', 1);
 
 INSERT INTO management_user(id, username, password) VALUES (0, 'arek', '$2a$11$fB6boLSK9FGhiEuL5kz5gubJL3D5IpkwtsfcW0EZyguy0SG3n9uNe');
+INSERT INTO management_user(id, username, password) VALUES (1, 'agatka', '$2a$11$fB6boLSK9FGhiEuL5kz5gubJL3D5IpkwtsfcW0EZyguy0SG3n9uNe');
 
 INSERT INTO management_role(id, name_) VALUES (0, 'admin');
 
@@ -67,3 +68,4 @@ INSERT INTO management_permission(id, name_) VALUES (0, 'perm_read_contact');
 INSERT INTO management_role_permission(role_id, permission_id) VALUES (0, 0);
 
 INSERT INTO management_user_role(user_id, role_id) VALUES (0, 0);
+INSERT INTO management_user_role(user_id, role_id) VALUES (1, 0);

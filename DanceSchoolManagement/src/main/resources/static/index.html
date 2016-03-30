@@ -1,10 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Szkoła Tańca</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="css/others.css"/>
+        <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">-->
+        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <style type="text/css">
+            [ng\:cloak], [ng-cloak], .ng-cloak {
+                display: none !important;
+            }
 
-</body>
+            .angular-google-map-container {
+                height: 400px;
+            }
+
+            #toTop {
+                display: block;
+                position: fixed;
+                top: 50%;
+                right: 0;
+                padding: 10px;
+                border: 1px solid gray;
+                border-radius: 4px;
+                background: white;
+            }
+
+            .cl-accept {
+                background: #428bca none repeat scroll 0 0 !important;
+            }
+
+            .cl-accept:hover {
+                background: #3276b1 none repeat scroll 0 0 !important;
+            }
+        </style>
+    </head>
+    <body ng-app="danceSchoolManagement" ng-cloak class="ng-cloak">
+        <div ng-controller="authController">
+            <form role="form" ng-submit="login()" ng-hide="user.username">
+                <div class="form-group">
+                    <label for="username">Username:</label> <input type="text"
+                                                                   class="form-control" id="username" name="username" ng-model="credentials.username"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label> <input type="password"
+                                                                   class="form-control" id="password" name="password" ng-model="credentials.password"/>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+
+            <div ng-show="user.username">
+                <button ng-click="logout()">Logout</button>
+                {{user.username}}<br/>
+                <div ng-repeat="perm in user.perms"> {{perm}} <br/></div>
+            </div>
+        </div>
+        <script src="js/others.js"></script>
+        <script src="js/angular-app.js"></script>
+    </body>
 </html>
