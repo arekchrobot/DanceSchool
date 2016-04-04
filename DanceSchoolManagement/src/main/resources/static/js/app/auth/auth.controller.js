@@ -21,7 +21,12 @@ angular.module("danceSchoolManagement.authController", []).config(function ($sta
         $scope.authenticate($scope.credentials);
     };
 
-    $scope.authenticate();
+    authService.isLogged(
+        function (returnedData) {
+            $rootScope.user = returnedData;
+        }, function (returnedData) {
+            $rootScope.user = null;
+        });
 
     $scope.logout = function () {
         authService.logout(
