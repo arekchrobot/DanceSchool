@@ -1,13 +1,13 @@
 <groups xmlns="http://www.isdc.ro/wro">
     <group name="others">
-        <css>file:${project.basedir}/src/main/resources/static/css/modern-business.css</css>
-        <css>webjar:bootstrap/3.1.1/css/bootstrap.min.css</css>
+        <css>classpath:static/css/modern-business.css</css>
+        <css>classpath:META-INF/resources/webjars/bootstrap/3.1.1/css/bootstrap.min.css</css>
         <css>webjar:angular-cookie-law/0.2.3/dist/angular-cookie-law.min.css</css>
         <js>webjar:jquery/2.1.1/jquery.min.js</js>
-        <js>//maps.googleapis.com/maps/api/js?sensor=false</js>
+        <!--<js>//maps.googleapis.com/maps/api/js?sensor=false</js>-->
         <js>webjar:angularjs/1.4.7/angular.js</js>
         <js>webjar:angularjs/1.4.7/angular-route.min.js</js>
-        <js>file:${project.basedir}/src/main/resources/static/js/custom.js</js>
+        <js>classpath:static/js/custom.js</js>
         <js>webjar:angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js</js>
         <js>webjar:angular-animate/1.4.7/angular-animate.min.js</js>
         <js>webjar:lodash/3.10.1/lodash.min.js</js>
@@ -22,9 +22,9 @@
     <group name="angular-app">
         <!--<js>file:${project.basedir}/src/main/resources/static/js/app/config.js</js>-->
 
-        <js>file:${project.basedir}/src/main/resources/static/js/app/**.service.js</js>
-        <js>file:${project.basedir}/src/main/resources/static/js/app/**.controller.js</js>
+        <js>classpath:static/js/app/**.service.js</js>
+        <js>classpath:static/js/app/**.controller.js</js>
 
-        <js>file:${project.basedir}/src/main/resources/static/js/app/app.js</js>
+        <js>classpath:static/js/app/app.js</js>
     </group>
 </groups>

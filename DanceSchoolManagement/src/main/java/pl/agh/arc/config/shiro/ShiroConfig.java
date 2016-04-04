@@ -1,4 +1,4 @@
-package pl.agh.arc.config;
+package pl.agh.arc.config.shiro;
 
 import org.apache.shiro.authc.credential.PasswordMatcher;
 import org.apache.shiro.authc.credential.PasswordService;
