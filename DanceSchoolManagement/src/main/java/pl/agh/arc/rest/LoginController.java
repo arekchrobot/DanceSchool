@@ -1,8 +1,8 @@
 package pl.agh.arc.rest;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.authc.credential.PasswordService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +18,7 @@ import pl.agh.arc.util.UserWrapper;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * Created by Arek on 2016-03-24.
@@ -34,13 +35,20 @@ public class LoginController {
 
 
     @RequestMapping(value = "/auth/login", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
-    public UserWrapper login(HttpServletRequest request, HttpServletResponse response, @RequestBody Credentials credentials) {
+    public UserWrapper login(HttpServletRequest request, HttpServletResponse response, @RequestBody Credentials credentials) throws IOException {
         UsernamePasswordToken authToken = new UsernamePasswordToken(credentials.getUsername(), credentials.getPassword(), true);
-        SecurityUtils.getSubject().login(authToken);
-        UserDetails userDetails = userDetailsService.loadUserByUsername(credentials.getUsername());
-        UserWrapper user =  new UserWrapper(userDetails.getUsername(), userDetails.getAuthorities());
-        sessionUtil.setCurrentUser(request, user);
-        return user;
+        try {
+            SecurityUtils.getSubject().login(authToken);
+            UserDetails userDetails = userDetailsService.loadUserByUsername(credentials.getUsername());
+            UserWrapper user = new UserWrapper(userDetails.getUsername(), userDetails.getAuthorities());
+            sessionUtil.setCurrentUser(request, user);
+            return user;
+        } catch (AuthenticationException exception) {
+//            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+//            throw new RuntimeException("User authentication failed.");
+        }
+        return null;
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/auth/logout")

@@ -3,6 +3,9 @@
         <css>classpath:static/css/modern-business.css</css>
         <css>classpath:META-INF/resources/webjars/bootstrap/3.1.1/css/bootstrap.min.css</css>
         <css>webjar:angular-cookie-law/0.2.3/dist/angular-cookie-law.min.css</css>
+        <css>webjar:ng-dialog/0.5.9/css/ngDialog.css</css>
+        <css>webjar:ng-dialog/0.5.9/css/ngDialog-theme-default.css</css>
+        <css>webjar:ng-dialog/0.5.9/css/ngDialog.css</css>
         <js>webjar:jquery/2.1.1/jquery.min.js</js>
         <!--<js>//maps.googleapis.com/maps/api/js?sensor=false</js>-->
         <js>webjar:angularjs/1.4.7/angular.js</js>
@@ -18,6 +21,7 @@
         <js>webjar:angular-cookie-law/0.2.3/dist/angular-cookie-law.min.js</js>
         <js>webjar:angular-ui-router/0.2.18/angular-ui-router.min.js</js>
         <js>webjar:angular-resource/1.4.7/angular-resource.min.js</js>
+        <js>webjar:ng-dialog/0.5.9/js/ngDialog.min.js</js>
     </group>
     <group name="angular-app">
         <!--<js>file:${project.basedir}/src/main/resources/static/js/app/config.js</js>-->
@@ -25,6 +29,7 @@
         <js>classpath:static/js/app/**.service.js</js>
         <js>classpath:static/js/app/**.controller.js</js>
 
+        <js>classpath:static/js/app/directives.js</js>
         <js>classpath:static/js/app/app.js</js>
     </group>
 </groups>

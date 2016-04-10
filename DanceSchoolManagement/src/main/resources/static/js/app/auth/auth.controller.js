@@ -1,10 +1,9 @@
 angular.module("danceSchoolManagement.authController", []).config(function ($stateProvider) {
     $stateProvider.state("login", {
         url: "/login",
-        views: {},
-        data: {pageTitle: "Log In"}
+        templateUrl: "html/auth/login.html"
     });
-}).controller("authController", function ($rootScope, $scope, authService) {
+}).controller("authController", function ($rootScope, $scope, authService, exceptionHandler) {
 
     $scope.credentials = {};
 
@@ -12,8 +11,11 @@ angular.module("danceSchoolManagement.authController", []).config(function ($sta
         authService.authenticate(credentials,
             function (returnedData) {
                 $rootScope.user = returnedData;
+                $scope.credentials = {};
             }, function (returnedData) {
-                $rootScope.user = null;
+                //$rootScope.user = null;
+                $scope.credentials = {};
+                exceptionHandler.handleRestError(returnedData);
             });
     };
 
