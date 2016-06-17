@@ -8,9 +8,14 @@ import org.apache.shiro.web.filter.authc.AnonymousFilter;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.apache.shiro.web.filter.authz.PermissionsAuthorizationFilter;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.security.web.csrf.CsrfTokenRepository;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
+import pl.agh.arc.config.filters.CsrfFilter;
+import pl.agh.arc.config.filters.CsrfHeaderFilter;
 import pl.agh.arc.config.shiro.BCryptPasswordService;
 import pl.agh.arc.config.shiro.ManagementRealm;
 
@@ -79,4 +84,26 @@ public class ShiroConfig {
     public LifecycleBeanPostProcessor lifecycleBeanPostProcessor() {
         return new LifecycleBeanPostProcessor();
     }
+
+//    @Bean
+//    public FilterRegistrationBean getCsrfFilter() {
+//        FilterRegistrationBean filterRegistrationBean  = new FilterRegistrationBean();
+//        filterRegistrationBean.setFilter(new CsrfFilter(csrfTokenRepository()));
+//        filterRegistrationBean.setOrder(Integer.MIN_VALUE);
+//        return filterRegistrationBean;
+//    }
+//
+//    @Bean
+//    public FilterRegistrationBean getCsrfHeaderFilter() {
+//        FilterRegistrationBean filterRegistrationBean  = new FilterRegistrationBean();
+//        filterRegistrationBean.setFilter(new CsrfHeaderFilter());
+//        filterRegistrationBean.setOrder(Integer.MIN_VALUE + 1);
+//        return filterRegistrationBean;
+//    }
+//
+//    private CsrfTokenRepository csrfTokenRepository() {
+//        HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository();
+//        repository.setHeaderName("X-XSRF-TOKEN");
+//        return repository;
+//    }
 }
