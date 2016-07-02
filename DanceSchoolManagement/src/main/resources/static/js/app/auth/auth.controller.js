@@ -3,19 +3,23 @@ angular.module("danceSchoolManagement.authController", []).config(function ($sta
         url: "/login",
         templateUrl: "html/auth/login.html"
     });
-}).controller("authController", function ($rootScope, $scope, authService, exceptionHandler) {
+}).controller("authController", function ($rootScope, $scope, $state, authService, exceptionHandler) {
 
     $scope.credentials = {};
+    $rootScope.loginError = false;
 
     $scope.authenticate = function (credentials) {
         authService.authenticate(credentials,
             function (returnedData) {
                 $rootScope.user = returnedData;
+                $rootScope.loginError = false;
+                $rootScope.user.perms = authService.createPermissions($rootScope.user);
                 $scope.credentials = {};
             }, function (returnedData) {
                 //$rootScope.user = null;
                 $scope.credentials = {};
-                exceptionHandler.handleRestError(returnedData);
+                $rootScope.loginError = true;
+                //exceptionHandler.handleRestError(returnedData);
             });
     };
 
@@ -26,6 +30,7 @@ angular.module("danceSchoolManagement.authController", []).config(function ($sta
     authService.isLogged(
         function (returnedData) {
             $rootScope.user = returnedData;
+            $rootScope.user.perms = authService.createPermissions($rootScope.user);
         }, function (returnedData) {
             $rootScope.user = null;
         });
@@ -34,8 +39,10 @@ angular.module("danceSchoolManagement.authController", []).config(function ($sta
         authService.logout(
             function (returnedData) {
                 $rootScope.user = null;
+                $state.go("login");
             }, function (returnedData) {
                 $rootScope.user = null;
+                $state.go("login");
             });
     };
 });

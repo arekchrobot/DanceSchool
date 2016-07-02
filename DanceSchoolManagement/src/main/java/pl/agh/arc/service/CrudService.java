@@ -12,9 +12,9 @@ public interface CrudService<T extends BaseEntity> {
 
     T save(T t);
 
-    T get(Serializable id);
+    T get(Long id);
 
     List<T> getAll();
 
-    void delete(Serializable id);
+    void delete(Long id);
 }

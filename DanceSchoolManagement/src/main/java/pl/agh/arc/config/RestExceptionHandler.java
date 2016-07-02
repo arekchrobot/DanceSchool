@@ -33,6 +33,6 @@ public class RestExceptionHandler {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
-        return new ResponseEntity<>(error, headers, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(error, headers, HttpStatus.valueOf(error.getStatus()));
     }
 }

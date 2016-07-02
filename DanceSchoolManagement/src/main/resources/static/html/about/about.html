@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">O szkole</div>
+
+        <!-- Table -->
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>Opis</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="about in abouts">
+                <td>{{about.id}}</td>
+                <td>{{about.description}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary" ng-show="user.perms['perm_write_about']">Edycja</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- /.container -->

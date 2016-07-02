@@ -1,5 +1,6 @@
 <div class="row">
     <div class="col-md-8">
+        <uib-alert type="danger" ng-show="loginError">Niepoprawny login lub hasło.</uib-alert>
         <form role="form" ng-submit="login()" ng-hide="user.username">
             <div class="control-group form-group">
                 <div class="controls">

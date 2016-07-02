@@ -20,5 +20,13 @@ angular.module("danceSchoolManagement.authService",[])
                 .error(failureFunction);
         };
 
+        service.createPermissions = function(user) {
+            var permissions = {};
+            for (var i =0; i < user.perms.length; i++) {
+                permissions[user.perms[i]] = true;
+            }
+            return permissions;
+        };
+
         return service;
     });

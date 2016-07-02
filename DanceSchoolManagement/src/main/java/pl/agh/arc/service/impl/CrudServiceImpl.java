@@ -13,7 +13,7 @@ import java.util.List;
  */
 public abstract class CrudServiceImpl<T extends BaseEntity> implements CrudService<T> {
 
-    protected abstract CrudRepository<T, Serializable> getRepository();
+    protected abstract CrudRepository<T, Long> getRepository();
 
     @Override
     public T save(T entity) {
@@ -22,7 +22,7 @@ public abstract class CrudServiceImpl<T extends BaseEntity> implements CrudServi
     }
 
     @Override
-    public T get(Serializable id) {
+    public T get(Long id) {
         T entity = getRepository().findOne(id);
         HibernateLazyInitiator.init(entity);
         return entity;
@@ -36,7 +36,7 @@ public abstract class CrudServiceImpl<T extends BaseEntity> implements CrudServi
     }
 
     @Override
-    public void delete(Serializable id) {
+    public void delete(Long id) {
         getRepository().delete(id);
     }
 }

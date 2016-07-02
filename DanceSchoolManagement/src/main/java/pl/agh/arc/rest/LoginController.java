@@ -22,7 +22,6 @@ import pl.agh.arc.util.UserWrapper;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 /**
  * Created by Arek on 2016-03-24.
@@ -51,7 +50,10 @@ public class LoginController {
             return user;
         } catch (AuthenticationException exception) {
             logger.info("Not user found with username: " + credentials.getUsername() + " and password: " + credentials.getPassword());
-            throw new RestException("Błąd logowania użytkownika.", HttpStatus.UNAUTHORIZED, HttpUtil.generateOriginalUrl(request));
+            throw new RestException("Błąd logowania użytkownika.", HttpStatus.UNAUTHORIZED, HttpUtil.generateOriginalUrl(request), credentials);
+        } catch (RuntimeException ex) {
+            logger.info("Error executing login for user: " + credentials.getUsername() + " with error" + ex.getMessage());
+            throw new RestException(ex.getLocalizedMessage(), HttpStatus.INTERNAL_SERVER_ERROR, HttpUtil.generateOriginalUrl(request), credentials);
         }
     }
 
