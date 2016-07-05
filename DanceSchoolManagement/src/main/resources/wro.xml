@@ -30,6 +30,7 @@
         <js>classpath:static/js/app/**.controller.js</js>
 
         <js>classpath:static/js/app/directives.js</js>
+        <js>classpath:static/js/app/filters.js</js>
         <js>classpath:static/js/app/app.js</js>
     </group>
 </groups>

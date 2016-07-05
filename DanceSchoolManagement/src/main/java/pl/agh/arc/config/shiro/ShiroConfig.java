@@ -7,6 +7,7 @@ import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.filter.authc.AnonymousFilter;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.apache.shiro.web.filter.authz.PermissionsAuthorizationFilter;
+import org.apache.shiro.web.filter.authz.RolesAuthorizationFilter;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -16,8 +17,6 @@ import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import pl.agh.arc.config.filters.CsrfFilter;
 import pl.agh.arc.config.filters.CsrfHeaderFilter;
-import pl.agh.arc.config.shiro.BCryptPasswordService;
-import pl.agh.arc.config.shiro.ManagementRealm;
 
 import javax.servlet.Filter;
 import java.util.HashMap;
@@ -44,7 +43,7 @@ public class ShiroConfig {
         Map<String, Filter> filters = new HashMap<>();
         filters.put("anon", new AnonymousFilter());
         filters.put("authc", new FormAuthenticationFilter());
-        filters.put("perms", new PermissionsAuthorizationFilter());
+        filters.put("perms", new RolesAuthorizationFilter());
 
         shiroFilter.setFilters(filters);
 

@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-md-8">
+        <h3>Zmień dane o szkole</h3>
+        <form name="aboutEditForm" id="aboutEditForm" ng-submit="doAction()">
+            <div class="control-group form-group" ng-show="about.id | isNotEmpty">
+                <div class="controls">
+                    <label>Id:</label>
+                    <input type="text" class="form-control" disabled ng-model="about.id"/>
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
+                    <label>Opis:</label>
+                    <textarea class="form-control" required ng-model="about.description" name="description"></textarea>
+                        <span style="color:red" ng-show="aboutEditForm.description.$dirty && aboutEditForm.description.$invalid">
+                            <span ng-show="aboutEditForm.description.$error.required">Opis nie może być pusty.</span>
+                        </span>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary"
+                    ng-disabled="aboutEditForm.description.$dirty && aboutEditForm.description.$invalid">{{buttonText}}</button>
+        </form>
+    </div>
+
+</div>
+<!-- /.row -->

@@ -6,13 +6,17 @@ angular.module("danceSchoolManagement", [
     "ngDialog",
 
     "danceSchoolManagement.directives",
+    "danceSchoolManagement.filters",
     "danceSchoolManagement.baseRestService",
     "danceSchoolManagement.dialogController",
     "danceSchoolManagement.exceptionHandler",
+
     "danceSchoolManagement.authService",
     "danceSchoolManagement.authController",
+
     "danceSchoolManagement.aboutServices",
-    "danceSchoolManagement.aboutController"
+    "danceSchoolManagement.aboutController",
+    "danceSchoolManagement.aboutEditController"
 
 ]).config(["$sceDelegateProvider", "$httpProvider", "$urlRouterProvider", function ($sceDelegateProvider, $httpProvider, $urlRouterProvider) {
 

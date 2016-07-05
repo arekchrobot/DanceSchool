@@ -13,7 +13,7 @@
                 <td>{{about.id}}</td>
                 <td>{{about.description}}</td>
                 <td>
-                    <button type="button" class="btn btn-primary" ng-show="user.perms['perm_write_about']">Edycja</button>
+                    <button type="button" class="btn btn-primary" ng-show="user.perms['perm_write_about']" ng-redirect-to-url={{"/about/"+about.id+"/edit"}}>Edycja</button>
                 </td>
             </tr>
         </table>

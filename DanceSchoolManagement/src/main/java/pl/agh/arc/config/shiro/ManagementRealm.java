@@ -14,6 +14,7 @@ import pl.agh.arc.domain.Role;
 import pl.agh.arc.domain.User;
 
 import java.util.HashSet;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 /**
@@ -27,7 +28,12 @@ public class ManagementRealm extends AuthorizingRealm {
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        String username = (String) principalCollection.fromRealm(getName()).iterator().next();
+        String username;
+        try {
+            username = (String) principalCollection.fromRealm(getName()).iterator().next();
+        } catch (NoSuchElementException ex) {
+            return null;
+        }
         User user = userDao.findByUsername(username);
 
         if (user != null) {
