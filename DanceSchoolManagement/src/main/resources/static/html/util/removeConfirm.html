@@ -1,0 +1,16 @@
+<div type="text/ng-template" id="html/error/removeConfirm.html" ng-controller="dialogController">
+    <div>
+        <div>
+            <div class="modal-header">
+                <h4 class="modal-title">Ostrzeżenie</h4>
+            </div>
+            <div class="modal-body">
+                Czy naprawdę chcesz usunąc ten element?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="close()">Anuluj</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="confirm(ngDialogData.func)">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>

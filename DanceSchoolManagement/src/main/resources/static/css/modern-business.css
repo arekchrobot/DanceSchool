@@ -73,6 +73,20 @@ footer {
     margin: 50px 0;
 }
 
+
+.st-sort-ascent:before{
+    content: '\25B2';
+}
+
+.st-sort-descent:before{
+    content: '\25BC';
+}
+
+.table-buttons-group {
+    min-width: 150px;
+}
+
+
 /* Responsive Styles */
 
 @media(max-width:991px) {

@@ -36,7 +36,8 @@ public class ShiroConfig {
         Map<String, String> filterChainDefinitionMapping = new HashMap<>();
         filterChainDefinitionMapping.put("/auth/login", "anon");
         filterChainDefinitionMapping.put("/auth/logout", "authc");
-        filterChainDefinitionMapping.put("/about/**", "perms[perm_read_about]");
+//        filterChainDefinitionMapping.put("/about/**", "perms[perm_read_about]");
+        filterChainDefinitionMapping.put("/about/**", "http[GET=perm_read_about,POST=perm_write_about,DELETE=perm_write_about]");
         filterChainDefinitionMapping.put("/**", "anon");
         shiroFilter.setFilterChainDefinitionMap(filterChainDefinitionMapping);
 
@@ -44,6 +45,7 @@ public class ShiroConfig {
         filters.put("anon", new AnonymousFilter());
         filters.put("authc", new FormAuthenticationFilter());
         filters.put("perms", new RolesAuthorizationFilter());
+        filters.put("http", new HttpMethodRolesAuthorizationFilter());
 
         shiroFilter.setFilters(filters);
 

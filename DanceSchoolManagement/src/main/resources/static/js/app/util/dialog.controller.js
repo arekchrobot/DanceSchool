@@ -2,4 +2,9 @@ angular.module("danceSchoolManagement.dialogController", []).controller("dialogC
     $scope.close = function() {
         ngDialog.closeAll();
     };
+
+    $scope.confirm = function(func) {
+        ngDialog.closeAll();
+        func();
+    }
 });

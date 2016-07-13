@@ -21,6 +21,8 @@ import org.hibernate.validator.constraints.Email;
 @SequenceGenerator(name = "default_gen", sequenceName = "contact_seq", allocationSize = 1)
 public class Contact extends BaseEntity {
 
+    private static final long serialVersionUID = -6905146362478976885L;
+
     @Column(name = "address", length = 100)
     @Size(max = 100)
     private String address;

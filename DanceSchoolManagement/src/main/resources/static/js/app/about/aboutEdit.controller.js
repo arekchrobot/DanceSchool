@@ -8,6 +8,7 @@ angular.module("danceSchoolManagement.aboutEditController", []).config(function 
 
     $scope.editable = true;
     $scope.buttonText = "Zapisz";
+    $scope.title = "Zmień dane o szkole";
 
     aboutRestService.get($stateParams.id,
         function (returnedData) {

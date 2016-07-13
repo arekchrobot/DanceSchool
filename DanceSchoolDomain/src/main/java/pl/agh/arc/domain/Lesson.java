@@ -19,6 +19,8 @@ import javax.validation.constraints.Size;
 @SequenceGenerator(name = "default_gen", sequenceName = "lesson_seq", allocationSize = 1)
 public class Lesson extends BaseEntity {
 
+    private static final long serialVersionUID = 8165888174876267938L;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "week_day")
     private WeekDay weekDay;

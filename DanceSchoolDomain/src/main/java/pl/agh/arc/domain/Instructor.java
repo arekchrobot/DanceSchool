@@ -15,6 +15,8 @@ import javax.validation.constraints.NotNull;
 @SequenceGenerator(name = "default_gen", sequenceName = "instructor_seq", allocationSize = 1)
 public class Instructor extends BaseEntity {
 
+    private static final long serialVersionUID = -1335210924816579877L;
+
     @Column(name = "name_", length = 100)
     @NotNull
     private String name;

@@ -12,6 +12,8 @@ import javax.validation.constraints.NotNull;
 @SequenceGenerator(name = "default_gen", sequenceName = "activity_seq", allocationSize = 1)
 public class Activity extends BaseEntity {
 
+    private static final long serialVersionUID = -2000357371215716394L;
+
     @OneToMany(mappedBy = "activity", fetch = FetchType.EAGER)
     private List<Instructor> instructors;
 

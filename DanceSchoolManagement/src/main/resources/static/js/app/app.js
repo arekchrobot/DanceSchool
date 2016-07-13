@@ -4,6 +4,7 @@ angular.module("danceSchoolManagement", [
     "ui.router",
     "ui.bootstrap",
     "ngDialog",
+    "smart-table",
 
     "danceSchoolManagement.directives",
     "danceSchoolManagement.filters",
@@ -16,7 +17,8 @@ angular.module("danceSchoolManagement", [
 
     "danceSchoolManagement.aboutServices",
     "danceSchoolManagement.aboutController",
-    "danceSchoolManagement.aboutEditController"
+    "danceSchoolManagement.aboutEditController",
+    "danceSchoolManagement.aboutCreateController"
 
 ]).config(["$sceDelegateProvider", "$httpProvider", "$urlRouterProvider", function ($sceDelegateProvider, $httpProvider, $urlRouterProvider) {
 
