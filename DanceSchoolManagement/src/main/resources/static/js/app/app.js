@@ -18,12 +18,16 @@ angular.module("danceSchoolManagement", [
     "danceSchoolManagement.aboutServices",
     "danceSchoolManagement.aboutController",
     "danceSchoolManagement.aboutEditController",
-    "danceSchoolManagement.aboutCreateController"
+    "danceSchoolManagement.aboutCreateController",
+
+    "danceSchoolManagement.contactServices",
+    "danceSchoolManagement.contactController",
 
 ]).config(["$sceDelegateProvider", "$httpProvider", "$urlRouterProvider", function ($sceDelegateProvider, $httpProvider, $urlRouterProvider) {
 
     $urlRouterProvider.when("/", "login").otherwise("/");
-    $httpProvider.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    //$httpProvider.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
     $sceDelegateProvider
         .resourceUrlWhitelist([

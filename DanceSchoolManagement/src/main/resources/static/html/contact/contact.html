@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-md-8">
+        <h3>Dane kontaktowe</h3>
+        <form name="contactEditForm" id="contactEditForm" ng-submit="doAction()">
+            <div class="control-group form-group">
+                <div class="controls">
+                    <label>Id:</label>
+                    <input type="text" class="form-control" disabled ng-model="contact.id"/>
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
+                    <label>Adres:</label>
+                    <input type="text" class="form-control" required ng-model="contact.address"/>
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
+                    <label>Kod pocztowy:</label>
+                    <input class="form-control" ng-model="contact.zipCode" ng-pattern="zipCodePattern" name="zipCode"/>
+                    <span style="color:red" ng-show="contactEditForm.zipCode.$dirty && contactEditForm.zipCode.$invalid">
+                        <span>Niewłaściwy format kodu. Poprawny to: 11-111</span>
+                    </span>
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
+                    <label>Miasto:</label>
+                    <input type="text" class="form-control" required ng-model="contact.city"/>
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
+                    <label>Telefon:</label>
+                    <input type="text" class="form-control" required ng-model="contact.phone"/>
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
+                    <label>Email:</label>
+                    <input type="email" class="form-control" required ng-model="contact.email"/>
+                </div>
+            </div>
+            <div class="control-group form-group" ng-repeat="openingHours in contact.openingHours">
+                <div class="controls">
+                    <label>Godziny otwarcia:</label>
+                    <input type="text" class="form-control" required ng-model="openingHours"/>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" ng-show="user.perms['perm_write_contact']"
+                    ng-disabled="contactEditForm.$dirty && contactEditForm.$invalid">Zapisz</button>
+        </form>
+    </div>
+
+</div>
+<!-- /.row -->

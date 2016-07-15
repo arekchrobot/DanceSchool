@@ -17,7 +17,7 @@ public abstract class CrudServiceImpl<T extends BaseEntity> implements CrudServi
 
     @Override
     public T save(T entity) {
-        getRepository().save(entity);
+        entity = getRepository().save(entity);
         return entity;
     }
 

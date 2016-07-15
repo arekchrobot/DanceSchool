@@ -7,7 +7,7 @@
         <css>webjar:ng-dialog/0.5.9/css/ngDialog-theme-default.css</css>
         <css>webjar:ng-dialog/0.5.9/css/ngDialog.css</css>
         <js>webjar:jquery/2.1.1/jquery.min.js</js>
-        <!--<js>//maps.googleapis.com/maps/api/js?sensor=false</js>-->
+        <!--<js>http://maps.googleapis.com/maps/api/js?sensor=false;libraries=places</js>-->
         <js>webjar:angularjs/1.4.7/angular.js</js>
         <js>webjar:angularjs/1.4.7/angular-route.min.js</js>
         <js>classpath:static/js/custom.js</js>

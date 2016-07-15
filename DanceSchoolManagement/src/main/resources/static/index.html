@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Dance School Management</title>
+        <title>Szkoła Tańca Panel Administracyjny</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="stylesheet" href="/wro/others.css"/>
@@ -53,6 +53,7 @@
                 <div uib-collapse="isCollapsed" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right" ng-show="user.username">
                         <li><a class="menu-item" ng-redirect-to="about" ng-show="user.perms['perm_read_about']">O szkole</a></li>
+                        <li><a class="menu-item" ng-redirect-to="contact" ng-show="user.perms['perm_read_contact']">Kontakt</a></li>
                         <!--<li class="dropdown" uib-dropdown is-open="status.isopen">-->
                             <!--<a class="dropdown-toggle" data-toggle="dropdown" uib-dropdown-toggle>Zajęcia <b class="caret"></b></a>-->
                             <!--<ul class="dropdown-menu">-->
