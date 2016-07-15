@@ -23,6 +23,9 @@ angular.module("danceSchoolManagement", [
     "danceSchoolManagement.contactServices",
     "danceSchoolManagement.contactController",
 
+    "danceSchoolManagement.newsServices",
+    "danceSchoolManagement.newsController"
+
 ]).config(["$sceDelegateProvider", "$httpProvider", "$urlRouterProvider", function ($sceDelegateProvider, $httpProvider, $urlRouterProvider) {
 
     $urlRouterProvider.when("/", "login").otherwise("/");

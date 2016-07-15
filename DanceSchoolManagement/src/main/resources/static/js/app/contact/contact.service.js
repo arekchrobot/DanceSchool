@@ -11,7 +11,7 @@ angular.module("danceSchoolManagement.contactServices", [])
 
         service.getLatLng = function(contactData, successFunction) {
             var address = contactData.address + "," + contactData.city;
-            var restUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=****';
+            var restUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=AIzaSyBcdnNGo25-ok5nHKyjjdy_pxn1PWzhVJQ';
             $http.get(restUrl,{})
                 .success(successFunction)
                 .error(exceptionHandler.handleRestError);

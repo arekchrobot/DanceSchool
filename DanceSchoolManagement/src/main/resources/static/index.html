@@ -54,6 +54,7 @@
                     <ul class="nav navbar-nav navbar-right" ng-show="user.username">
                         <li><a class="menu-item" ng-redirect-to="about" ng-show="user.perms['perm_read_about']">O szkole</a></li>
                         <li><a class="menu-item" ng-redirect-to="contact" ng-show="user.perms['perm_read_contact']">Kontakt</a></li>
+                        <li><a class="menu-item" ng-redirect-to="news" ng-show="user.perms['perm_read_news']">Aktualności</a></li>
                         <!--<li class="dropdown" uib-dropdown is-open="status.isopen">-->
                             <!--<a class="dropdown-toggle" data-toggle="dropdown" uib-dropdown-toggle>Zajęcia <b class="caret"></b></a>-->
                             <!--<ul class="dropdown-menu">-->
