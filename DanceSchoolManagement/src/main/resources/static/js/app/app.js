@@ -24,7 +24,8 @@ angular.module("danceSchoolManagement", [
     "danceSchoolManagement.contactController",
 
     "danceSchoolManagement.newsServices",
-    "danceSchoolManagement.newsController"
+    "danceSchoolManagement.newsController",
+    "danceSchoolManagement.newsCreateController"
 
 ]).config(["$sceDelegateProvider", "$httpProvider", "$urlRouterProvider", function ($sceDelegateProvider, $httpProvider, $urlRouterProvider) {
 
