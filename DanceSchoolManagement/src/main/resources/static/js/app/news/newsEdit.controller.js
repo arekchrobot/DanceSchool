@@ -1,17 +1,21 @@
-angular.module("danceSchoolManagement.newsCreateController", []).config(function ($stateProvider) {
-    $stateProvider.state("newsCreate", {
-        url: "/news/create",
+angular.module("danceSchoolManagement.newsEditController", []).config(function ($stateProvider) {
+    $stateProvider.state("newsEdit", {
+        url: "/news/:id/edit",
         templateUrl: "html/news/newsEdit.html",
-        controller: "newsCreateController"
+        controller: "newsEditController"
     });
-}).controller("newsCreateController", function ($scope, $state, $stateParams, newsRestService, exceptionHandler) {
+}).controller("newsEditController", function ($scope, $state, $stateParams, newsRestService, exceptionHandler) {
 
     $scope.editable = true;
-    $scope.buttonText = "Stwórz";
-    $scope.title = "Dodaj nowy wpis do aktualności";
+    $scope.buttonText = "Zapisz";
+    $scope.title = "Edytuj wpis do aktualności";
 
-    $scope.news = {};
-    $scope.news.news = {};
+    newsRestService.get($stateParams.id,
+        function(returnedData){
+            $scope.news = returnedData;
+        },
+        exceptionHandler.handleRestError
+    );
 
     $scope.doAction = function() {
         newsRestService.save($scope.news,

@@ -92,20 +92,24 @@ public class ImageUtil {
         }
     }
 
-    public boolean saveImage(byte[] image, Activity activity) {
+    public boolean saveImage(List<byte[]> images, Activity activity) {
         StringBuilder filepath = new StringBuilder();
         filepath.append(storedDataProperties.getBasePath());
         filepath.append(storedDataProperties.getActivityPath());
         filepath.append(activity.getId());
         filepath.append("/");
         //TODO implement intelligent save
-//        filepath.append(activity.getImage());
-
+        if(activity.getGallery().size() != images.size()) {
+            logger.error("Unable to save gallery for activity. Wrong size of gallery and images!");
+            return false;
+        }
         try {
-            resolveByteArray(image, "png", filepath.toString());
+            for (int i=0;i < images.size(); i++) {
+                resolveByteArray(images.get(i), "png", filepath.toString() + activity.getGallery().get(i));
+            }
             return true;
         } catch (IOException e) {
-            logger.error("Unable to save image for activity with id: " + activity.getId() + " with ex: " + e.getLocalizedMessage());
+            logger.error("Unable to save images for activity with id: " + activity.getId() + " with ex: " + e.getLocalizedMessage());
             return false;
         }
     }
@@ -131,7 +135,14 @@ public class ImageUtil {
         InputStream is = new ByteArrayInputStream(imageArray);
         BufferedImage resolvedImage = ImageIO.read(is);
 
-        ImageIO.write(resolvedImage, type, new File(filepath));
+        File destinationFile = new File(filepath);
+        if(!destinationFile.exists()) {
+            if (!destinationFile.getParentFile().exists()) {
+                destinationFile.mkdirs();
+            }
+
+            ImageIO.write(resolvedImage, type, destinationFile);
+        }
     }
 
     public void removeFile(News news) {

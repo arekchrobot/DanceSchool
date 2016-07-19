@@ -32,18 +32,20 @@ public class NewsServiceImpl extends CrudServiceImpl<News> implements NewsServic
 
     @Override
     public NewsWrapper save(NewsWrapper newsWrapper) {
-        boolean saved = imageUtil.saveImage(newsWrapper.getImage(), newsWrapper.getNews());
-        if(saved) {
-            newsWrapper.setNews(save(newsWrapper.getNews()));
-            newsWrapper.setImage(imageUtil.resolveImage(newsWrapper.getNews()));
-            return newsWrapper;
+        boolean isNew = newsWrapper.getNews().isNew();
+        newsWrapper.setNews(save(newsWrapper.getNews()));
+        if(isNew) {
+            imageUtil.saveImage(newsWrapper.getImage(), newsWrapper.getNews());
+            //newsWrapper.setImage(imageUtil.resolveImage(newsWrapper.getNews()));
         }
-        return null;
+        return newsWrapper;
     }
 
     @Override
     public NewsWrapper getOne(Long id) {
-        return new NewsWrapper(get(id));
+        NewsWrapper newsWrapper = new NewsWrapper(get(id));
+        newsWrapper.setImage(imageUtil.resolveImage(newsWrapper.getNews()));
+        return newsWrapper;
     }
 
     @Override

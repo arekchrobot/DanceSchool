@@ -6,12 +6,24 @@
             <div class="control-group form-group" ng-show="news.news.id | isNotEmpty">
                 <div class="controls">
                     <label>Id:</label>
-                    <input type="text" class="form-control" disabled ng-model="about.id"/>
+                    <input type="text" class="form-control" disabled ng-model="news.news.id"/>
                 </div>
             </div>
             <div class="control-group form-group">
                 <div class="controls">
-                    <label>Image:</label>
+                    <label>Tytuł:</label>
+                    <input type="text" class="form-control" required ng-model="news.news.title"/>
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
+                    <label>Opis:</label>
+                    <textarea type="text" class="form-control" required ng-model="news.news.description"></textarea>
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
+                    <label>Zdjęcie:</label>
                     <div class="input-group">
                         <label class="input-group-btn">
                             <span class="btn btn-primary">
@@ -33,8 +45,7 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-primary" ng-show="user.perms['perm_write_news']"
-                    ng-disabled="newsEditForm.$dirty && newsEditForm.$invalid">{{buttonText}}
-            </button>
+                    ng-disabled="newsEditForm.$dirty && newsEditForm.$invalid">{{buttonText}}</button>
             <button class="btn btn-default" ng-redirect-to="news">Wróć do listy</button>
         </form>
     </div>

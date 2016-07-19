@@ -10,6 +10,9 @@ public class NewsWrapper {
     private News news;
     private byte[] image;
 
+    public NewsWrapper() {
+    }
+
     public NewsWrapper(News news) {
         this.news = news;
     }
