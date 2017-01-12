@@ -1,81 +1,72 @@
 package pl.agh.arc.rest;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import pl.agh.arc.service.security.ManagementUserDetailsAdapter;
+import pl.agh.arc.exceptions.RestException;
+import pl.agh.arc.util.Credentials;
+import pl.agh.arc.util.HttpUtil;
+import pl.agh.arc.util.SessionUtil;
+import pl.agh.arc.util.UserWrapper;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.security.Principal;
-import java.util.Collection;
-import java.util.stream.Collectors;
 
 /**
  * Created by Arek on 2016-03-24.
  */
 @RestController
+@RequestMapping("/auth")
 public class LoginController {
 
-    private boolean invalidateHttpSession = true;
-    private boolean clearAuthentication = true;
+    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Autowired
+    private SessionUtil sessionUtil;
 
 
-    @RequestMapping(value = "/login/user", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
-    public UserWrapper myUser() {
-        ManagementUserDetailsAdapter managementUser = (ManagementUserDetailsAdapter) SecurityContextHolder
-                .getContext().getAuthentication().getPrincipal();
-        return new UserWrapper(managementUser.getUsername(), managementUser.getAuthorities());
+    @RequestMapping(value = "/login", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public UserWrapper login(HttpServletRequest request, HttpServletResponse response, @RequestBody Credentials credentials) throws RestException {
+        UsernamePasswordToken authToken = new UsernamePasswordToken(credentials.getUsername(), credentials.getPassword(), true);
+        try {
+            logger.info("Logging user: " + credentials.getUsername());
+            SecurityUtils.getSubject().login(authToken);
+            UserDetails userDetails = userDetailsService.loadUserByUsername(credentials.getUsername());
+            UserWrapper user = new UserWrapper(userDetails.getUsername(), userDetails.getAuthorities());
+            sessionUtil.setCurrentUser(request, user);
+            return user;
+        } catch (AuthenticationException exception) {
+            logger.info("Not user found with username: " + credentials.getUsername() + " and password: " + credentials.getPassword());
+            throw new RestException("Błąd logowania użytkownika.", HttpStatus.UNAUTHORIZED, HttpUtil.generateOriginalUrl(request), credentials);
+        } catch (RuntimeException ex) {
+            logger.info("Error executing login for user: " + credentials.getUsername() + " with error" + ex.getMessage());
+            throw new RestException(ex.getLocalizedMessage(), HttpStatus.INTERNAL_SERVER_ERROR, HttpUtil.generateOriginalUrl(request), credentials);
+        }
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/auth/logout")
+    @RequestMapping( value = "/logout", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public boolean logout(HttpServletRequest request, HttpServletResponse response) {
-//        if (invalidateHttpSession) {
-//            HttpSession session = request.getSession();
-//            if (session != null) {
-//                session.invalidate();
-//            }
-//        }
-//
-//        if (clearAuthentication) {
-//            SecurityContext context = SecurityContextHolder.getContext();
-//            context.setAuthentication(null);
-//        }
-//
-//        SecurityContextHolder.clearContext();
-
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if(auth != null) {
-            new SecurityContextLogoutHandler().logout(request,response,auth);
-            auth = null;
-            SecurityContextHolder.getContext().setAuthentication(auth);
-            SecurityContextHolder.setContext(SecurityContextHolder.createEmptyContext());
-        }
-
+        logger.info("Logging out user: " + sessionUtil.getCurrentUser(request).getUsername());
+        SecurityUtils.getSubject().logout();
+        sessionUtil.removeCurrentUser(request);
         return true;
     }
 
-    public class UserWrapper {
-        private String username;
-        private Collection<String> perms;
-
-        public UserWrapper(String username, Collection<? extends GrantedAuthority> authorities) {
-            this.username = username;
-            this.perms = authorities.stream().map(a -> a.getAuthority()).collect(Collectors.toList());
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public Collection<String> getPerms() {
-            return perms;
-        }
+    @RequestMapping(value = "/logged", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public UserWrapper isLogged(HttpServletRequest request, HttpServletResponse response) {
+        return sessionUtil.getCurrentUser(request);
     }
 }

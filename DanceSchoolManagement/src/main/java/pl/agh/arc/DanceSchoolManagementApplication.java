@@ -5,6 +5,7 @@ import org.apache.catalina.connector.Connector;
 import org.apache.tomcat.util.descriptor.web.SecurityCollection;
 import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
@@ -23,7 +24,8 @@ import java.util.Set;
 
 @SpringBootApplication
 @EnableJpaRepositories
-//@RestController
+@EnableAutoConfiguration(exclude = {
+		org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration.class})
 public class DanceSchoolManagementApplication {
 
 	@Bean
@@ -43,40 +45,6 @@ public class DanceSchoolManagementApplication {
 		tomcat.addAdditionalTomcatConnectors(initiateHttpConnector());
 		return tomcat;
 	}
-
-//	@RequestMapping("/user")
-//	public User user(Principal user) {
-//		User managementUser = ((ManagementUserDetailsAdapter) SecurityContextHolder
-//				.getContext().getAuthentication().getPrincipal()).getUser();
-//		return managementUser;
-////		return user;
-//	}
-
-//	@RequestMapping(value = "/secured/user", produces = "application/json;charset=UTF-8")
-//	 public UserWrapper myUser(Principal user) {
-//		ManagementUserDetailsAdapter managementUser = (ManagementUserDetailsAdapter) SecurityContextHolder
-//				.getContext().getAuthentication().getPrincipal();
-//		return new UserWrapper(managementUser.getUsername(), managementUser.getAuthorities());
-////		return user;
-//	}
-//
-//	public class UserWrapper {
-//		private String username;
-//		private Collection<GrantedAuthority> authorities;
-//
-//		public UserWrapper(String username, Collection<? extends GrantedAuthority> authorities) {
-//			this.username = username;
-//			this.authorities = (Collection<GrantedAuthority>) authorities;
-//		}
-//
-//		public String getUsername() {
-//			return username;
-//		}
-//
-//		public Collection<GrantedAuthority> getAuthorities() {
-//			return authorities;
-//		}
-//	}
 
 	private Connector initiateHttpConnector() {
 		Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");

@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-md-8">
+        <h3>{{title}}</h3>
+
+        <form name="newsEditForm" id="newsEditForm" ng-submit="doAction()">
+            <div class="control-group form-group" ng-show="news.news.id | isNotEmpty">
+                <div class="controls">
+                    <label>Id:</label>
+                    <input type="text" class="form-control" disabled ng-model="news.news.id"/>
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
+                    <label>Tytuł:</label>
+                    <input type="text" class="form-control" required ng-model="news.news.title"/>
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
+                    <label>Opis:</label>
+                    <textarea type="text" class="form-control" required ng-model="news.news.description"></textarea>
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
+                    <label>Zdjęcie:</label>
+                    <div class="input-group">
+                        <label class="input-group-btn">
+                            <span class="btn btn-primary">
+                                Przeglądaj &hellip;
+                                <input type="file" name="file" style="display: none;" onchange="angular.element(this).scope().uploadFile(this)" accept="image/jpeg">
+                            </span>
+                        </label>
+                        <input type="text" class="form-control" ng-model="news.news.image" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img class="img-responsive" ng-src="data:image/jpeg;base64,{{news.image}}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" ng-show="user.perms['perm_write_news']"
+                    ng-disabled="newsEditForm.$dirty && newsEditForm.$invalid">{{buttonText}}</button>
+            <button class="btn btn-default" ng-redirect-to="news">Wróć do listy</button>
+        </form>
+    </div>
+
+</div>
+<!-- /.row -->

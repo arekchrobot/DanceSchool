@@ -26,3 +26,6 @@ mvnw
 *.odt
 *.pdf
 /stored_data/**
+
+#Ignoring for purpose
+**/contact.service.js

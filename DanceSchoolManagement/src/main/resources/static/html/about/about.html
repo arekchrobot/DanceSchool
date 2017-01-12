@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">O szkole</div>
+
+        <!-- Table -->
+        <table class="table" st-table="displayedAbouts" st-safe-src="abouts">
+            <tr>
+                <th st-sort="id" st-sort-default="true">Id</th>
+                <th>Opis</th>
+                <th class="table-buttons-group"></th>
+            </tr>
+            <tr ng-repeat="about in displayedAbouts">
+                <td>{{about.id}}</td>
+                <td>{{about.description}}</td>
+                <td>
+                        <button type="button" class="btn btn-default" ng-show="user.perms['perm_write_about']" ng-redirect-to-url={{"/about/"+about.id+"/edit"}}>Edycja</button>
+                        <button type="button" class="btn btn-danger" ng-show="user.perms['perm_write_about']" ng-click="removeItem(about)">Usuń</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+        <button class="btn btn-default center-block" ng-redirect-to="aboutCreate">Dodaj</button>
+</div>
+<!-- /.container -->

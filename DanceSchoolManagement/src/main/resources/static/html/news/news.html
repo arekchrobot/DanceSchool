@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">Aktualności</div>
+
+        <!-- Table -->
+        <table class="table" st-table="displayedNews" st-safe-src="newsWrappers">
+            <tr>
+                <th>Id</th>
+                <th>Tytuł</th>
+                <th>Opis</th>
+                <th class="table-buttons-group"></th>
+            </tr>
+            <tr ng-repeat="newsWrapper in displayedNews">
+                <td>{{newsWrapper.news.id}}</td>
+                <td>{{newsWrapper.news.title}}</td>
+                <td>{{newsWrapper.news.description}}</td>
+                <td>
+                    <button type="button" class="btn btn-default" ng-show="user.perms['perm_write_news']" ng-redirect-to-url={{"/news/"+newsWrapper.news.id+"/edit"}}>Edycja</button>
+                    <button type="button" class="btn btn-danger" ng-show="user.perms['perm_write_news']" ng-click="removeItem(newsWrapper.news)">Usuń</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <button class="btn btn-default center-block" ng-redirect-to="newsCreate">Dodaj</button>
+</div>
+<!-- /.container -->

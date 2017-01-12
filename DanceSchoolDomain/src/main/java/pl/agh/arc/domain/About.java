@@ -13,6 +13,8 @@ import javax.persistence.Table;
 @SequenceGenerator(name = "default_gen", sequenceName = "about_seq", allocationSize = 1)
 public class About extends BaseEntity {
 
+    private static final long serialVersionUID = -3056338869212452596L;
+
     @Column(name = "description", length = 1000)
     private String description;
 

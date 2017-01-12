@@ -15,6 +15,8 @@ import javax.validation.constraints.Size;
 @SequenceGenerator(name = "default_gen", sequenceName = "news_seq", allocationSize = 1)
 public class News extends BaseEntity {
 
+    private static final long serialVersionUID = -8584016237725767967L;
+
     @Column(name = "title", length = 75)
     @Size(max = 75)
     private String title;

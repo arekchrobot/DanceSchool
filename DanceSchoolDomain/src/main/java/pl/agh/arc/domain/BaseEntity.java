@@ -7,7 +7,9 @@ import java.io.Serializable;
  * Created by Arek on 2016-01-24.
  */
 @MappedSuperclass
-public class BaseEntity implements Serializable {
+public abstract class BaseEntity implements Serializable {
+
+    private static final long serialVersionUID = 8746819457741245070L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "default_gen")
@@ -15,7 +17,7 @@ public class BaseEntity implements Serializable {
     private Long id;
 
     @Version
-    private Long version;
+    private long version;
 
     public BaseEntity() {
     }
@@ -26,5 +28,13 @@ public class BaseEntity implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public long getVersion() {
+        return version;
+    }
+
+    public boolean isNew() {
+        return null == getId();
     }
 }
